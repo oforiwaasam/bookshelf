@@ -3,11 +3,8 @@ from flask import Flask, render_template
 import secrets
 
 
-# gives secret key to copy+paste for our app.config['SECRET_KEY'] var
-# print(secrets.token_hex(16))
-
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '980d348741e7e672e87f483676c3e912'
+app.config['SECRET_KEY'] = '182a078b8ed4e78614ce382d20b0ce1e'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
 
