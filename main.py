@@ -1,8 +1,5 @@
 from flask import Flask, render_template
 
-import secrets
-
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '182a078b8ed4e78614ce382d20b0ce1e'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
