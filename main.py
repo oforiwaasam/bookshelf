@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '182a078b8ed4e78614ce382d20b0ce1e'
@@ -13,7 +14,12 @@ def home():
 
 @app.route("/login")
 def login():
-    return render_template('login.html')
+    form = LoginForm()
+    if form.validate_on_submit(): # checks if entries are valid
+        flash(f'{form.username.data} successfully logged in!', 'success')
+        return redirect(url_for('home')) # if so - send to home page
+        
+    return render_template('login.html', form=form)
 
 @app.route("/registration")
 def registration():
