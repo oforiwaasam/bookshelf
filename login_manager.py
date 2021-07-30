@@ -33,7 +33,7 @@ class Login_Manager():
     def get_email(self):
         if not self.is_logged_in():
             return ""
-        return self.user.username
+        return self.user.email
     
     def __str__(self):
         if self.is_logged_in():

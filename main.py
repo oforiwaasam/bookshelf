@@ -41,7 +41,7 @@ def login():
         
         #Incorrect Password
         #if not check_password_match(login_user.password, form.password.data): add encryption later
-        if not login_user.password == form.password.data):
+        if not (login_user.password == form.password.data):
             flash(f'Incorrect password ', 'danger')
             return render_template('login.html', title='Login', form=form)
         
@@ -87,7 +87,13 @@ def about():
 
 @app.route("/user")
 def user():
-    return render_template('user.html', subtitle='User Page')
+    theText = "No one logged in"
+    if log_manage.is_logged_in():
+        theText = 'User: {}, email: {}'.format(
+            log_manage.get_username(),log_manage.get_email()) 
+                    
+    return render_template('user.html', subtitle='User Page',
+                           text= theText)
 
 @app.route("/search")
 def search():
