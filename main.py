@@ -1,7 +1,12 @@
+#Imported files from other external sources
 from flask import Flask, render_template,  url_for, flash, redirect
+from flask_sqlalchemy import SQLAlchemy
+
+# Imported Files from our folder
 from forms import RegistrationForm, LoginForm
 from login_manager import Login_Manager
-from flask_sqlalchemy import SQLAlchemy
+from encryption import *
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '182a078b8ed4e78614ce382d20b0ce1e'
@@ -40,8 +45,7 @@ def login():
             return render_template('login.html', title='Login', form=form)
         
         #Incorrect Password
-        #if not check_password_match(login_user.password, form.password.data): add encryption later
-        if not (login_user.password == form.password.data):
+        if not check_password_match(login_user.password, form.password.data):
             flash(f'Incorrect password ', 'danger')
             return render_template('login.html', title='Login', form=form)
         
@@ -71,8 +75,8 @@ def registration():
         # User can be registered
         user = User(username=form.username.data, 
                     email=form.email.data, 
-                    #password= encrypt_password(form.password.data)) add encryption later
-                    password= form.password.data)
+                    password= encrypt_password(form.password.data))
+        
         db.session.add(user)
         db.session.commit()
         
