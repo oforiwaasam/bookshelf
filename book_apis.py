@@ -7,7 +7,7 @@ def ol_books(isbn):
     result = requests.get('https://openlibrary.org/api/books?bibkeys=ISBN:' +
                           isbn + '&jscmd=data&format=json')
     result_json = result.json()
-    # print(result_json)
+    print(result_json)
     data = result_json['ISBN:' + isbn]
     print('Book title: ' + data['title'])
     authors_str = ''
@@ -105,19 +105,20 @@ def main():
     
     blackout = '9781982133276'
     weird = '9780563533603'  # no info on author
-    # ol_books(blackout)
-
+#     ol_books(blackout)
+    ol_books(data_structures)
+    
     author = 'Ahmed Manan'
     # ol_authors(author)
 
     manan_book = 'Where the wild frontiers are'
     data_structures_book = 'Data Structures and Algorithm Analysis in Java'
     faye = 'Petit Pays'
-    # ol_book_names(manan_book)
+#     ol_book_names(manan_book)
 
     # look into how to make the following functions work efficiently
-        # ol_subjects()
-        # ol_work_id()
+#     ol_subjects()
+#     ol_work_id()
 
 
 if __name__ == "__main__":
