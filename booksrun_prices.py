@@ -1,14 +1,17 @@
 import requests
 
+# The user inputs the ISBN of the book
 def input_isbn():
   return input("Enter book ISBN: ")
-  
+
+# Getting the response from the API of Booksrun.com
 def booksrun_api_response(isbn, api_key):
   url = "https://booksrun.com/api/v3/price/buy/" + isbn + "?key=" + api_key
   resp = requests.get(url)
   json = resp.json()
   return json['result']['offers']
 
+# 
 def from_booksrun(json):
    return json['booksrun']
 
@@ -33,19 +36,29 @@ def get_booksrun_paperbook_prices(json_booksrun):
   return buy_used, buy_new, rent
 
 def get_others_paperbook_prices(json_marketplace):
-  buy_used = []
-  for element in json_marketplace:
-      item = {}
-      item[element['seller']] = element['used']
-      buy_used.append(item)
   
-  buy_new = []
-  for element in json_marketplace:
-      item = {}
-      item[element['seller']] = element['used']
-      buy_used.append(item)
+  if json_marketplace != 'none':
+    buy_used = []
+    for element in json_marketplace:
+        item = {}
+        if element['used'] != 'none':
+          element['used']['price'] += element['shipping']
+          del element['used']['condition']
+          price_and_url = element['used']
+          buy_used.append(price_and_url)
+
+    buy_new = []
+    for element in json_marketplace:
+        item = {}
+        if element['new'] != 'none':
+          element['new']['price'] += element['shipping']
+          del element['new']['condition']
+          price_and_url = element['new']
+          buy_used.append(price_and_url)
       
-  return buy_used, buy_new  
+    return buy_used, buy_new  
+  else:
+    return None
 
 def get_ebook_prices(json):
   ebook = None
@@ -55,7 +68,9 @@ def get_ebook_prices(json):
       ebook[length] = json['ebook'][length]
     
   return ebook
-  
+    
+    
+
 def main():
   api_key = "8mhw4i56nn5p1kasxdyu"
   isbn = input_isbn()
@@ -64,7 +79,7 @@ def main():
   json_others = from_others(json)
   
   paperbook_prices1 = get_booksrun_paperbook_prices(json_booksrun)
-  print(f"Booksrun paperbook prices:\n {paperbook_prices1}")
+  print(f"\nBooksrun paperbook prices:\n {paperbook_prices1}")
   print("\n")
   
   ebook_prices = get_ebook_prices(json_booksrun)
