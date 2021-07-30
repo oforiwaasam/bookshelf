@@ -62,7 +62,7 @@ def get_others_paperbook_prices(json_marketplace):
         buy_new = []
         for element in json_marketplace:
             item = {}
-            if element['new'] != 'none':
+            if element['new'] != 'none' or element['new'] != None:
                 element['new']['price'] += element['shipping']
                 del element['new']['condition']
                 price_and_url = element['new']['price'], element['new']['cart_url']
@@ -77,7 +77,7 @@ def get_others_paperbook_prices(json_marketplace):
 # return: prices, length of rent and cart urls of the ebooks
 def get_ebook_prices(json):
     ebook = None
-    if json['ebook'] != 'none':
+    if json['ebook'] != 'none' or json['ebook'] != None:
         ebook = {}
         for length, info in json['ebook'].items():
             ebook[length] = json['ebook'][length]['price'], json['ebook'][length]['cart_url']
@@ -113,6 +113,3 @@ def main():
     paperbook_prices2 = get_others_paperbook_prices(json_others)
     print(f"Third party sellers:\n {paperbook_prices2}")
     print("\n")
-
-
-main()
