@@ -1,12 +1,10 @@
 #Imported files from other external sources
 from flask import Flask, render_template,  url_for, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
-
 # Imported Files from our folder
 from forms import RegistrationForm, LoginForm
 from login_manager import Login_Manager
 from encryption import *
-
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '182a078b8ed4e78614ce382d20b0ce1e'
@@ -30,7 +28,7 @@ log_manage = Login_Manager()
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html', subtitle='Home Page')
+    return render_template('home.html')
 
 
 @app.route("/login", methods=['GET', 'POST'])
