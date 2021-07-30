@@ -36,13 +36,7 @@ def get_booksrun_paperbook_prices(json_booksrun):
     if json_booksrun['new'] != 'none':
         buy_new = json_booksrun['new']['price'], json_booksrun['new']['cart_url']
 
-    rent = None
-    if json_booksrun['rent'] != 'none':
-        rent = {}
-        for days, info in json_booksrun['rent'].items():
-            rent[days] = json_booksrun['rent'][days]['price'], json_booksrun['rent'][days]['cart_url']
-
-    return buy_used, buy_new, rent
+    return buy_used, buy_new
 
 
 # prices of hard copy books sold by third party sellers on Booksrun
@@ -55,7 +49,9 @@ def get_others_paperbook_prices(json_marketplace):
             item = {}
             if element['used'] != 'none':
                 element['used']['price'] += element['shipping']
-                del element['used']['condition']
+                key = 'condition'
+                if key in element['used']:
+                  del element['used']['condition']
                 price_and_url = element['used']['price'], element['used']['cart_url']
                 buy_used.append(price_and_url)
 
@@ -64,7 +60,9 @@ def get_others_paperbook_prices(json_marketplace):
             item = {}
             if element['new'] != 'none' or element['new'] != None:
                 element['new']['price'] += element['shipping']
-                del element['new']['condition']
+                key = 'condition'
+                if key in element['new']:
+                  del element['new']['condition']
                 price_and_url = element['new']['price'], element['new']['cart_url']
                 buy_used.append(price_and_url)
 
@@ -75,24 +73,60 @@ def get_others_paperbook_prices(json_marketplace):
 
 # prices of ebooks sold by Booksrun
 # return: prices, length of rent and cart urls of the ebooks
-def get_ebook_prices(json):
+def get_ebook_prices(json_booksrun):
     ebook = None
-    if json['ebook'] != 'none' or json['ebook'] != None:
+    if json_booksrun['ebook'] != 'none' or json_booksrun['ebook'] != None:
         ebook = {}
-        for length, info in json['ebook'].items():
-            ebook[length] = json['ebook'][length]['price'], json['ebook'][length]['cart_url']
+        for length, info in json_booksrun['ebook'].items():
+            ebook[length] = json_booksrun['ebook'][length]['price'], json_booksrun['ebook'][length]['cart_url']
 
     return ebook
 
 
-# compares all the prices offered by Booksrun and returns the lowest
-# def used_lowest_price(bookrun_paper_prices, third_party_prices):
-#      lowest_price = []
-#      if bookrun_paper_prices != None:
-#         for i in range(2):
-#           if bookrun_paper_prices[i]  != None
-#               lowest_price.append[bookrun_paper_prices[i]['']]
+# returns rental prices
+def get_rentals_prices(json_booksrun):
+    rent = None
+    if json_booksrun['rent'] != 'none':
+        rent = {}
+        for days, info in json_booksrun['rent'].items():
+            rent[days] = json_booksrun['rent'][days]['price'], json_booksrun['rent'][days]['cart_url']
   
+    return rent
+
+
+# compares all the prices of used books offered by Booksrun and returns the lowest
+def used_lowest_price(bookrun_paper_prices, third_party_prices):
+    lowest_price = []
+    if bookrun_paper_prices[0] != None:
+        lowest_price.append(bookrun_paper_prices[0])
+    
+    if third_party_prices[0] != None:
+        for pair in third_party_prices[0]:
+          lowest_price.append(pair)
+    
+    if lowest_price != []:
+        lowest_price.sort()
+        return lowest_price[0]
+    else:
+      return None
+    
+    
+# compares all the prices of new books offered by Booksrun and returns the lowest
+def new_lowest_price(bookrun_paper_prices, third_party_prices):
+    lowest_price = []
+    if bookrun_paper_prices[1] != None:
+        lowest_price.append(bookrun_paper_prices[1])
+    
+    if third_party_prices[1] != None:
+        for pair in third_party_prices[1]:
+          lowest_price.append(pair)
+    
+    if lowest_price != []:
+        lowest_price.sort()
+        return lowest_price[0]
+    else:
+        return None
+
 
 # Driver function
 def main():
@@ -103,7 +137,7 @@ def main():
     json_others = from_others(json)
 
     paperbook_prices1 = get_booksrun_paperbook_prices(json_booksrun)
-    print(f"\nBooksrun paperbook prices:\n {paperbook_prices1}")
+#     print(f"\nBooksrun paperbook prices:\n {paperbook_prices1}")
     print("\n")
 
     ebook_prices = get_ebook_prices(json_booksrun)
@@ -111,5 +145,19 @@ def main():
     print("\n")
 
     paperbook_prices2 = get_others_paperbook_prices(json_others)
-    print(f"Third party sellers:\n {paperbook_prices2}")
+#     print(f"Third party sellers:\n {paperbook_prices2}")
+#     print("\n")
+    
+    lowest_price_used = used_lowest_price(paperbook_prices1, paperbook_prices2)
+    print(f"Used book lowest price:\n {lowest_price_used}")
     print("\n")
+    
+    lowest_price_new = new_lowest_price(paperbook_prices1, paperbook_prices2)
+    print(f"New book lowest price:\n {lowest_price_new}")
+    print("\n")
+    
+    rentals_prices = get_rentals_prices(json_booksrun)
+    print(f"Price of rentals:\n {rentals_prices}")
+    print("\n")
+
+main()
