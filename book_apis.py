@@ -5,13 +5,14 @@ import requests
 
 # searching book info by ISBN number
 def ol_isbn(isbn):
+    book_dic = {}
     result = requests.get('https://openlibrary.org/api/books?bibkeys=ISBN:' +
                           isbn + '&jscmd=data&format=json')
     result_json = result.json()
-    print(result_json)
+#     print(result_json)
     data = result_json['ISBN:' + isbn]
     book_title = data['title']
-    print('Book title: ' + book_title)
+#     print('Book title: ' + book_title)
     authors_str = ''
     authors_list = []
     author_key = 'authors'
@@ -21,25 +22,30 @@ def ol_isbn(isbn):
             authors_list.append(author['name'])
         size = len(authors_str)
         authors = authors_str[:size - 2]
-        print('Author(s): ' + authors)
+#         print('Author(s): ' + authors)
     else:
         authors = 'Information on author(s) not available!'
-        print(authors)
-    # print(data)
+        authors_list.append("Unknown")
+#         print(authors)
+#     print(data)
+    url = data['url']
     cover_key = 'cover'
     if cover_key in data:
         cover_url = data['cover']['large']
     else:
         cover_url = 'No cover picture available!'
-    return book_title, authors_list, cover_url
+#     print(book_title, authors_list, cover_url)
+    book_dic[cover_url] = [book_title, authors_list, url]
+    return book_dic
 
 
 # searching book info by book name
 def ol_book_names(book):
     result = requests.get('http://openlibrary.org/search.json?q=' + book)
     result_json = result.json()
-    print('First 20 results for ' + book)
-    print('---------------------' + '-' * len(book))
+#     print('First 20 results for ' + book)
+#     print('---------------------' + '-' * len(book))
+    books_dic = {}
     num_books = 0
     for book in result_json['docs']:
         # print(book)
@@ -52,18 +58,22 @@ def ol_book_names(book):
                 book_isbn = book['isbn'][0]
 
             # get book info using its isbn
-            print('ISBN Number: ' + book_isbn)
+#             print('ISBN Number: ' + book_isbn)
             results = ol_isbn(book_isbn)
-            print(results)
-        else:
-            print('Information about book not available!')
+            books_dic.update(results)
+#             books_dic[results[2]]= [results[0],results[1], results[3]]           
+#             print(results)
+#         else:
+#             print('Information about book not available!')
         if num_books == 20:
             break
     # print(result_json)
+    return books_dic
 
 
 # searching book info for books written by specified author
 def ol_authors(author):
+    books_dic={}
     result = requests.get('https://openlibrary.org/search/authors.json?q=' +
                           author)
     result_json = result.json()
@@ -76,76 +86,93 @@ def ol_authors(author):
         list_of_books = []
         for book in books_json['entries']:
             list_of_books.append(book['title'])
-        print('Below are the books written by ' + author + ': ')
+            books_dic[book['title']] = [book['title'], author, None]
+#         print('Below are the books written by ' + author + ': ')
 
-        # later transform this so that the brackets don't appear
-        print(list_of_books)
+#         # later transform this so that the brackets don't appear
+#         print(list_of_books)
+
     else:
 
         # figure out how to make sure that authors for whose names could be
         # written differently do not fall in this else statement
 
         print("Please enter the exact name of the author! Options below!!!")
-        authors = []
+        authors = ""
         for author in result_json['docs']:
-            authors.append(author['text'][1])
-        print(authors)
-        # print(result_json)
+            authors+= author['text'][1]
+        return 1, authors
+        
+    return 0, books_dic
+    
 
 
 # search book info by work or book Open Library ID
 def ol_work_id(book_ol_id):
+    books_dic={}
     result = requests.get('https://openlibrary.org' + book_ol_id + '.json')
     result_json = result.json()
     # print(result_json)
-    ol_book_names(result_json['title'])
+    results = ol_book_names(result_json['title'])
+    books_dic.update(results)
+    return books_dic
 
 
 # search book info for books on subject provided
 def ol_subjects(subject):
+    books_dic={}
     result = requests.get('https://openlibrary.org/subjects/' + subject + '.json')
     result_json = result.json()
     # print(result_json)
     for work in result_json['works']:
         # print(work)
-        ol_work_id(work['key'])
+        results = ol_work_id(work['key'])
+        books_dic.update(results)
+    return books_dic
 
 
 # main function to test my individual functions
 def main():
-    # everything in main was used to test if functions work well
+#     # everything in main was used to test if functions work well
     isbn = '9780980200447'
-    mill_isbn = '9780199670802'
-    data_structures = '9780132576277'
-    aquarium = '9780793820788'
-    petit_pays = '9782246857334'
-    buildings = '9781564588852'
+#     mill_isbn = '9780199670802'
+#     data_structures = '9780132576277'
+#     aquarium = '9780793820788'
+#     petit_pays = '9782246857334'
+#     buildings = '9781564588852'
     cinderella_murder = '9781476763699'
     
-    blackout = '9781982133276'
-    weird = '9780563533603'  # no info on author
-    ol_books(data_structures)
+#     blackout = '9781982133276'
+#     weird = '9780563533603'  # no info on author
+#     ol_books(data_structures)
     
-    # results = ol_isbn(blackout)
-    # print(results)
+#     # results = ol_isbn(blackout)
+#     # print(results)
 
     author = 'Ahmed Manan'
-    # ol_authors(author)
+#     # ol_authors(author)
 
-    manan_book = 'Where the wild frontiers are'
-    data_structures_book = 'Data Structures and Algorithm Analysis in Java'
-    faye = 'Petit Pays'
-#     ol_book_names(manan_book)
+#     manan_book = 'Where the wild frontiers are'
+#     data_structures_book = 'Data Structures and Algorithm Analysis in Java'
+#     faye = 'Petit Pays'
+# #     ol_book_names(manan_book)
 
-    # look into how to make the following functions work efficiently
-#     ol_subjects()
-#     ol_work_id()
+#     # look into how to make the following functions work efficiently
+# #     ol_subjects()
+# #     ol_work_id()
 
-    ahmed_manan_book_ol_id = '/works/OL16563824W'
-    # ol_work_id(ahmed_manan_book_ol_id)
+#     ahmed_manan_book_ol_id = '/works/OL16563824W'
+#     # ol_work_id(ahmed_manan_book_ol_id)
 
-    burundi_subject = 'burundi'
-    # ol_subjects(burundi_subject)
+#     burundi_subject = 'burundi'
+#     # ol_subjects(burundi_subject)
+
+#     print(ol_isbn(isbn))
+#     print(ol_book_names("cinderella_murder"))print(ol_authors("Manan Ahmed Asif"))
+#     print(ol_authors("Ahmed"))
+#     print(ol_authors("Manan Ahmed Asif"))
+#     print(ol_work_id("cinderella_murder"))
+#     print(ol_subjects("Math"))
 
 
 if __name__ == "__main__":
