@@ -9,7 +9,7 @@ def g_search(api_key, isbn):
 
 
 def main():
-  api_key = "AIzaSyBe5hasKj4f6lckw15uMEL7xQacHTAiAcQ"
+  api_key = "I have it in my local repo"
   js_mill_isbn = '9780199670802'
   data_structures = '9780132576277'
   aquarium = '9780793820788'
