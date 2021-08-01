@@ -4,7 +4,7 @@ from booksrun_prices import *
 def get_info_by_isbn(isbn, price_api_key):
   title, authors, cover_url = ol_isbn(isbn)
   json = booksrun_api_response(isbn, price_api_key)
-  print(json)
+
   json_booksrun = from_booksrun(json)
   ebook_dict = get_ebook_prices(json_booksrun)
   if ebook_dict is not None or ebook_dict != 'none':
