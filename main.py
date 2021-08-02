@@ -29,15 +29,16 @@ class Book:
     def __init__(self):
         self.key = ''
         self.other_books = {}
+        self.home_search = ''
         
 book = Book()
 @app.route("/")
 @app.route("/home", methods=['GET', 'POST'])
 def home():
     if request.method=='POST':
-        book.name = request.form.get("q")
-#         print(book.name)
-        return render_template('search.html', books={})
+        book.key = request.form.get("q")
+        book.other_books = ol_book_names(book.key)
+        return render_template('search.html', books=book.other_books)
     return render_template('home.html')
 
 
@@ -107,16 +108,21 @@ def user():
     return render_template('user.html', subtitle='User Page',
                            text= theText)
 
+def lookforbook(other_books,name):
+    for key,value in other_books.items():
+        if(name in key ):
+            print("VALUE")
+            return key, value
+    return None, [None,None,None] #in case it does not work for now -> make exception later on
 
 @app.route("/book_page/<path:key>", methods=['GET','POST'])
 def book_page(key):
-    book_data = book.other_books[key]
-    return render_template('book_page.html', book_title=book_data[0], author=book_data[1], web=book_data[2], cover=key)
+    cover, book_data = lookforbook(book.other_books,key)
+    return render_template('book_page.html', book_title=book_data[0], author=book_data[1], web=book_data[2], cover=cover, recs = book.other_books)
 
 
 @app.route("/search", methods=['GET', 'POST'])
 def search():
-    print("search")
     if request.method=='POST':
         book.key = request.form.get("q")
         book.other_books = ol_book_names(book.key)
@@ -128,7 +134,6 @@ def search():
 
 @app.route("/search_author", methods=['GET', 'POST'])
 def search_author():
-    print("search_author")
     if request.method=='POST':
         book.key = request.form.get("q")
         search = ol_authors(book.key)
