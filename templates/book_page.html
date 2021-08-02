@@ -1,7 +1,19 @@
+<div class = "general_page">
+    <h2>{{ book_title }}</h2>
+    <h4>{{ ''.join(author) }}</h4>
+<!--     <h2>{{ web }}</h2>
+    <h2>{{ cover }}</h2> -->
+    <img src={{cover}} alt={{book_title}} width="200" height="300">
+    <br>
+    <a href={{web}}> <button class="book_button">For More Information</button></a>
+    <p>Description Here</p>
+    <br>
+    <h5>Other Related Books</h5>
+    {% for key,value in recs.items() %}
+        <a href="/book_page/{{key}}"><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>     
+        
+    {% endfor %}
+</div>
 {% extends "layout.html" %}
 {% block content %}
-    <h2>{{ book_title }}</h2>
-    <h2>{{ author }}</h2>
-    <h2>{{ web }}</h2>
-    <h2>{{ cover }}</h2>
 {% endblock content %}
