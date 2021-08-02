@@ -1,11 +1,17 @@
 <div class = "general_page">
     <h2>{{ book_title }}</h2>
-    <h4>{{ ''.join(author) }}</h4>
+    <h4>{{ author}}</h4>
 <!--     <h2>{{ web }}</h2>
     <h2>{{ cover }}</h2> -->
     <img src={{cover}} alt={{book_title}} width="200" height="300">
     <br>
     <a href={{web}}> <button class="book_button">For More Information</button></a>
+    <br>
+    {% for data in prices %}
+        <a href={{data[2]}}> {{data[0]}}</a>
+        <p>${{data[1]}}</p>      
+    {% endfor %}
+    <br>
     <p>Description Here</p>
     <br>
     <h5>Other Related Books</h5>
