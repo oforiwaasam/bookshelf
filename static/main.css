@@ -351,3 +351,156 @@ a.article-title:hover {
    float: left;
    background-color:green;
 } */
+
+
+/****************USER_PAGE**************/
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.v42_58 {
+  width: 100%;
+  height: 2389px;
+  background: rgba(243,220,212,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v97_8 {
+  width: 100%;
+  height: 656px;
+  background: url("../images/v97_8.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 132px;
+  left: 45px;
+  overflow: hidden;
+}
+.v97_7 {
+  width: 100%;
+  height: 656px;
+  background: rgba(209,207,192,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v42_60 {
+  width: 252px;
+  height: 233px;
+  background: rgba(194,194,180,1);
+  opacity: 1;
+  position: absolute;
+  top: 63px;
+  left: 526px;
+  border-radius: 50%;
+}
+.v42_64 {
+  width: 100%;
+  height: 338px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 868px;
+  left: 20px;
+  border: 1px solid rgba(0,0,0,1);
+  overflow: hidden;
+}
+.v42_65 {
+  width: 271px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 804px;
+  left: 45px;
+  font-family: Sahitya;
+  font-weight: Regular;
+  font-size: 40px;
+  opacity: 1;
+  text-align: left;
+}
+.v42_66 {
+  width: 250px;
+  height: 209px;
+  background: rgba(56,87,121,1);
+  opacity: 1;
+  position: absolute;
+  top: 474px;
+  left: 111px;
+  border-radius: 50%;
+}
+.v42_67 {
+  width: 197px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 428px;
+  left: 129px;
+  font-family: Sahitya;
+  font-weight: Regular;
+  font-size: 25px;
+  opacity: 1;
+  text-align: left;
+}
+.v42_68 {
+  width: 250px;
+  height: 209px;
+  background: rgba(56,87,121,1);
+  opacity: 1;
+  position: absolute;
+  top: 474px;
+  left: 1057px;
+  border-radius: 50%;
+}
+.v42_69 {
+  width: 296px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 428px;
+  left: 1034px;
+  font-family: Sahitya;
+  font-weight: Regular;
+  font-size: 25px;
+  opacity: 1;
+  text-align: left;
+}
+.v42_70 {
+  width: 392px;
+  height: 52px;
+  background: url("../images/v42_70.png");
+  opacity: 1;
+  position: absolute;
+  top: 700px;
+  left: 508px;
+  border-radius: 50%;
+}
+.v97_9 {
+  width: 386px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 474px;
+  left: 504px;
+  font-family: Sahitya;
+  font-weight: Regular;
+  font-size: 25px;
+  opacity: 1;
+  text-align: center;
+}
+.v97_10 {
+  width: 386px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 449px;
+  left: 504px;
+  font-family: Sahitya;
+  font-weight: Regular;
+  font-size: 35px;
+  opacity: 1;
+  text-align: center;
+}
