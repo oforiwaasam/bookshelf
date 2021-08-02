@@ -114,6 +114,7 @@ def user():
     return render_template('user.html', subtitle='User Page',
                            text= theText)
 
+# helper fun for book_page
 def lookforbook(other_books,name):
     for key,value in other_books.items():
         if(name in key ):
