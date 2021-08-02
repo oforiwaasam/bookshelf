@@ -1,7 +1,22 @@
 <div class="home_img">
     <div class= "searchnav" style="width:800px; margin:0 auto;">
-        <button class ="home_button">Book</button>
-        <input type="text" placeholder="Search..">
+<!--             <button class="drop-down-button_home">Books</button> -->
+        <div class="dcontent_home">
+            <ul>
+                <a href="/search"> <button class="home_button">Books</button> </a>
+                <a href="/search_author"> <button class="home_button">Author</button> </a>
+                <a href="/search_ISBN"> <button class="home_button">ISBN Number</button> </a>
+                <a href="/search_topics"> <button class="home_button">Topics</button> </a>
+                <a href="/search_open_ID"> <button class="home_button">ID</button> </a>
+
+            </ul>
+        </div>
+      
+        <form method="POST" action="/home" >
+<!--             <button class ="home_button">Options</button> -->
+            <input type="text" name="q" placeholder="Search Book..">                
+<!--             <input class ="home_button2" type="submit" name="form" value="Submit"> -->
+        </form>
     </div>
 </div>
 

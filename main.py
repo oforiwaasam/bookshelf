@@ -1,10 +1,11 @@
 #Imported files from other external sources
-from flask import Flask, render_template,  url_for, flash, redirect
+from flask import Flask, render_template,  url_for, flash, redirect,request
 from flask_sqlalchemy import SQLAlchemy
 # Imported Files from our folder
 from forms import RegistrationForm, LoginForm
 from login_manager import Login_Manager
 from encryption import *
+from book_apis import *
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '182a078b8ed4e78614ce382d20b0ce1e'
@@ -24,10 +25,19 @@ class User(db.Model):
 #Create login manager object          
 log_manage = Login_Manager()      
 
-
+class Book:
+    def __init__(self):
+        self.key = ''
+        self.other_books = {}
+        
+book = Book()
 @app.route("/")
-@app.route("/home")
+@app.route("/home", methods=['GET', 'POST'])
 def home():
+    if request.method=='POST':
+        book.name = request.form.get("q")
+#         print(book.name)
+        return render_template('search.html', books={})
     return render_template('home.html')
 
 
@@ -97,10 +107,67 @@ def user():
     return render_template('user.html', subtitle='User Page',
                            text= theText)
 
-@app.route("/search")
-def search():
-    return render_template('search.html', subtitle='Search Page')
 
+@app.route("/book_page/<path:key>", methods=['GET','POST'])
+def book_page(key):
+    book_data = book.other_books[key]
+    return render_template('book_page.html', book_title=book_data[0], author=book_data[1], web=book_data[2], cover=key)
+
+
+@app.route("/search", methods=['GET', 'POST'])
+def search():
+    print("search")
+    if request.method=='POST':
+        book.key = request.form.get("q")
+        book.other_books = ol_book_names(book.key)
+#         book.name = "Book1"
+#         book.other_books = {"Book1":["book_title", "authors_list", "cover_url", "url"], "Book2":["book_title", "authors_list", "cover_url", "url"], "Book3":["book_title", "authors_list", "cover_url", "url"],"Book32":["book_title", "authors_list", "cover_url", "url"]}
+        return render_template('search.html', books=book.other_books)
+        
+    return render_template('search.html', books={})
+
+@app.route("/search_author", methods=['GET', 'POST'])
+def search_author():
+    print("search_author")
+    if request.method=='POST':
+        book.key = request.form.get("q")
+        search = ol_authors(book.key)
+        if(search[0]==0):
+            book.other_books = search[1]
+            print(book.other_books)
+            return render_template('search.html', books=book.other_books)
+        else:
+            return render_template('search.html', subtitle=f'Did you mean.. {search[1]}', books={})
+        
+    return render_template('search.html', books={})
+
+@app.route("/search_ISBN", methods=['GET', 'POST'])
+def search_ISBN():
+    print("search_ISBN")
+    if request.method=='POST':
+        book.key = request.form.get("q")
+        book.other_books = ol_isbn(book.key)
+        return render_template('search.html', books=book.other_books)
+    return render_template('search.html', books={})
+
+@app.route("/search_topics", methods=['GET', 'POST'])
+def search_topics():
+    print("search_topics")
+    if request.method=='POST':
+        book.key = request.form.get("q")
+        book.other_books = ol_subjects(book.key)
+        return render_template('search.html', books=book.other_books)
+    return render_template('search.html', books={})
+
+@app.route("/search_open_ID", methods=['GET', 'POST'])
+def search_open_ID():
+    print("search_open_ID")
+    if request.method=='POST':
+        book.key = request.form.get("q")
+        book.other_books = ol_work_id(book.key)
+        return render_template('search.html', books=book.other_books)
+        
+    return render_template('search.html', books={})
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
