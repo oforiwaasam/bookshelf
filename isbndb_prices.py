@@ -91,10 +91,8 @@ def main():
   buildings = '9781564588852'
   cinderella_murder = '9781476763699'
   wrong_isbn = '1829kdlsk'
-  json = i_api_response(api_key, js_mill_isbn)
+  json = i_api_response(api_key, data_structures)
   if json is not None:
-    print(f"Prices from different merchants: {json['prices']}")
-    print("\n")
     listed_price = i_listed_price(json)
     lowest_ebook = i_lowest_ebook_price(json)
     print(f"Lowest price for ebook: {lowest_ebook}")
