@@ -13,3 +13,4 @@ pytest
 pycodestyle
 
 flask-bcrypt==0.7.1
+requests==2.18.4

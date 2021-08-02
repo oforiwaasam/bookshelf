@@ -118,37 +118,37 @@ def get_data(ISBN):
 
     
 def main():
-#     api_key = "46445_4b9207100f7b3236200445a31f95a377"
-#     js_mill_isbn = '9780199670802'
-#     data_structures = '9780132576277'
-#     aquarium = '9780793820788'
-#     petit_pays = '9782246857334'
-#     buildings = '9781564588852'
-#     cinderella_murder = '9781476763699'
-#     wrong_isbn = '1829kdlsk'
-#     json = i_api_response(api_key, js_mill_isbn)
-#     if json is not None:
-# #         print(f"Prices from different merchants: {json['prices']}")
-#         print("\n")
-#         listed_price = i_listed_price(json)
-#         lowest_ebook = i_lowest_ebook_price(json)
-#         print(f"Lowest price for ebook: {lowest_ebook}")
-#         print("\n")
-#         lowest_used = i_lowest_used_price(json)
-#         print(f"lowest price for used books: {lowest_used}")
-#         print("\n")
-#         lowest_new = i_lowest_new_price(json)
-#         print(f"Lowest price for new books: {lowest_new}")
-#         print("\n")
-#         lowest_rental = i_lowest_rental_price(json)
-#         print(f"Lowest price for rented books: {lowest_rental}")
-#     else:
-#         print("No Results: You've probably entered a wrong ISBN")
-    data_lst=get_data('9780199670802')
-    for data in data_lst:
-        print("source", data[0])
-        print("prices",data[1])
-        print("link",data[2])
+#     data_lst=get_data('9780199670802')
+#     for data in data_lst:
+#         print("source", data[0])
+#         print("prices",data[1])
+#         print("link",data[2])
+
+  api_key = "46445_4b9207100f7b3236200445a31f95a377"
+  js_mill_isbn = '9780199670802'
+  data_structures = '9780132576277'
+  aquarium = '9780793820788'
+  petit_pays = '9782246857334'
+  buildings = '9781564588852'
+  cinderella_murder = '9781476763699'
+  wrong_isbn = '1829kdlsk'
+  json = i_api_response(api_key, data_structures)
+  if json is not None:
+    listed_price = i_listed_price(json)
+    lowest_ebook = i_lowest_ebook_price(json)
+    print(f"Lowest price for ebook: {lowest_ebook}")
+    print("\n")
+    lowest_used = i_lowest_used_price(json)
+    print(f"lowest price for used books: {lowest_used}")
+    print("\n")
+    lowest_new = i_lowest_new_price(json)
+    print(f"Lowest price for new books: {lowest_new}")
+    print("\n")
+    lowest_rental = i_lowest_rental_price(json)
+    print(f"Lowest price for rented books: {lowest_rental}")
+  else:
+    print("No Results: You've probably entered a wrong ISBN")
+
 
 
 main()
