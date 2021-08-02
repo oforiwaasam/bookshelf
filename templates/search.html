@@ -1,0 +1,48 @@
+<div class="top_search">
+    <div class= "searchbar" style="width:800px; margin:0 auto;">
+            <div class="drop-down">
+                <button class="drop-down-button">Books</button>
+                <div class="dcontent">
+                <ul>
+                    <a href="/search"> <button class="book_button">Books</button> </a>
+                    <a href="/search_author"> <button class="book_button">Author</button> </a>
+                    <a href="/search_ISBN"> <button class="book_button">ISBN Number</button> </a>
+                    <a href="/search_topics"> <button class="book_button">Topics</button> </a>
+                    <a href="/search_open_ID"> <button class="book_button">ID</button> </a>
+
+                </ul>
+                </div>
+
+            </div>         
+            <form method="POST">
+<!--                 <div class="drop-down">
+                    <button class="drop-down-button">Books</button>
+                    <div class="dcontent">
+                    <ul>
+                        <a href="/search"> <button class="book_button">Books</button> </a>
+                        <a href="/search_author"> <button class="book_button">Author</button> </a>
+                        <a href="/search_ISBN"> <button class="book_button">ISBN Number</button> </a>
+                        <a href="/search_topics"> <button class="book_button">Topics</button> </a>
+                        <a href="/search_open_ID"> <button class="book_button">ID</button> </a>
+
+                    </ul>
+                    </div>
+
+                </div> -->
+                <input type="text" name="q" placeholder="Search..">                
+                <input class ="searchbar_button" type="submit" name="form" value="Submit">
+            </form>
+            <p>{{subtitle}}</p>
+    </div>
+</div>
+
+<div class=book_collection>
+    {% for key,value in books.items() %}
+            <a href="/book_page/{{key}}"><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>
+            
+    {% endfor %}
+
+</div>
+{% extends "layout.html" %}
+{% block content %}
+{% endblock content %}
