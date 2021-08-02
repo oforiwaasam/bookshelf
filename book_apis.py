@@ -120,6 +120,7 @@ def ol_work_id(book_ol_id):
 
 # search book info for books on subject provided
 def ol_subjects(subject):
+    subject = subject.lower()
     books_dic={}
     result = requests.get('https://openlibrary.org/subjects/' + subject + '.json')
     result_json = result.json()
