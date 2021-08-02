@@ -6,6 +6,7 @@ from forms import RegistrationForm, LoginForm
 from login_manager import Login_Manager
 from encryption import *
 from book_apis import *
+from isbndb_prices import get_data
 from databases import new_user
 
 app = Flask(__name__)
@@ -115,14 +116,21 @@ def user():
 def lookforbook(other_books,name):
     for key,value in other_books.items():
         if(name in key ):
-            print("VALUE")
             return key, value
-    return None, [None,None,None] #in case it does not work for now -> make exception later on
+    return None, [None,None,None,None] #in case it does not work for now -> make exception later on
+            
 
 @app.route("/book_page/<path:key>", methods=['GET','POST'])
 def book_page(key):
     cover, book_data = lookforbook(book.other_books,key)
-    return render_template('book_page.html', book_title=book_data[0], author=book_data[1], web=book_data[2], cover=cover, recs = book.other_books)
+#     print(book_data[1], book_data[3])
+    author = ''.join(book_data[1])
+    # [listed_price,lowest_ebook,lowest_used,lowest_new,lowest_rental]  
+    prices = get_data(book_data[3])
+    if prices==None:
+        return render_template('book_page.html', book_title=book_data[0], author=author, web=book_data[2], cover=cover, recs = book.other_books)
+
+    return render_template('book_page.html', book_title=book_data[0], author=author, web=book_data[2], cover=cover, recs = book.other_books, prices=prices)
 
 
 @app.route("/search", methods=['GET', 'POST'])
