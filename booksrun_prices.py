@@ -128,15 +128,15 @@ def get_rentals_prices(json_booksrun):
 # compares all the prices of used books offered by Booksrun and returns the lowest
 def used_lowest_price(bookrun_paper_prices, third_party_prices):
     lowest_price = []
-    if bookrun_paper_prices[0] != None:
+    if bookrun_paper_prices[0] != None and bookrun_paper_prices != 'none':
         lowest_price.append(bookrun_paper_prices[0])
   
-    if third_party_prices != None:
-      if third_party_prices[0] != None:
+    if third_party_prices != None and third_party_prices != 'none':
+      if third_party_prices[0] != None and third_party_prices != 'none':
           for pair in third_party_prices[0]:
             lowest_price.append(pair)
     
-    if lowest_price != [{}]:
+    if lowest_price != [{}] and lowest_price != []:
         sorted(lowest_price, key = lambda item: item['BooksRun.com'][0])
         return lowest_price[0]
     else:
@@ -146,16 +146,15 @@ def used_lowest_price(bookrun_paper_prices, third_party_prices):
 # compares all the prices of new books offered by Booksrun and returns the lowest
 def new_lowest_price(bookrun_paper_prices, third_party_prices):
     lowest_price = []
-    if bookrun_paper_prices[1] != None:
+    if bookrun_paper_prices[1] != None and bookrun_paper_prices != 'none':
         lowest_price.append(bookrun_paper_prices[1])
     
-    if third_party_prices != None:
+    if third_party_prices != None and third_party_prices != 'none':
       if third_party_prices[1] != None:
           for pair in third_party_prices[1]:
             lowest_price.append(pair)
     
-    if lowest_price != [{}]:
-        print(lowest_price)
+    if lowest_price != [{}] and lowest_price != []:
         sorted(lowest_price, key = lambda item: item['BooksRun.com'][0])
         return lowest_price[0]
     else:
@@ -171,7 +170,7 @@ def ebook_or_rental_lowest(prices):
       if float(price) < float(lowest_price['BooksRun.com'][0]):
           lowest_price = value
   
-    if lowest_price['BooksRun.com'] [0]!= 100000:
+    if lowest_price['BooksRun.com'][0]!= 100000:
       return lowest_price
     else:
       return None
@@ -233,4 +232,4 @@ def main():
       print("The API Response was not successful!")
 
 
-main()
+#main()
