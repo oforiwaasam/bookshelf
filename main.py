@@ -6,6 +6,7 @@ from forms import RegistrationForm, LoginForm
 from login_manager import Login_Manager
 from encryption import *
 from book_apis import *
+from databases import new_user
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '182a078b8ed4e78614ce382d20b0ce1e'
@@ -90,6 +91,9 @@ def registration():
         db.session.commit()
         
         flash(f'Account created for {form.username.data}!', 'success')
+        
+        # creating a user instance in user_data table
+        new_user(user.id, user.username, user.email)
         
         return redirect(url_for('login'))   # Successfully registered now login
     return render_template('registration.html', form=form)
