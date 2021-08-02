@@ -108,7 +108,8 @@ def user():
     if log_manage.is_logged_in():
         theText = 'User: {}, email: {}'.format(
             log_manage.get_username(),log_manage.get_email()) 
-                    
+             
+            
     return render_template('user.html', subtitle='User Page',
                            text= theText)
 
