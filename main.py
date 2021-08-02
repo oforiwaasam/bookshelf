@@ -39,7 +39,7 @@ def home():
     if request.method=='POST':
         book.key = request.form.get("q")
         book.other_books = ol_book_names(book.key)
-        return render_template('search.html', books=book.other_books)
+        return render_template('search.html',button="Books", books=book.other_books)
     return render_template('home.html')
 
 
@@ -132,9 +132,9 @@ def search():
         book.other_books = ol_book_names(book.key)
 #         book.name = "Book1"
 #         book.other_books = {"Book1":["book_title", "authors_list", "cover_url", "url"], "Book2":["book_title", "authors_list", "cover_url", "url"], "Book3":["book_title", "authors_list", "cover_url", "url"],"Book32":["book_title", "authors_list", "cover_url", "url"]}
-        return render_template('search.html', books=book.other_books)
+        return render_template('search.html',button="Book", books=book.other_books)
         
-    return render_template('search.html', books={})
+    return render_template('search.html',button="Book", books={})
 
 @app.route("/search_author", methods=['GET', 'POST'])
 def search_author():
@@ -144,11 +144,11 @@ def search_author():
         if(search[0]==0):
             book.other_books = search[1]
             print(book.other_books)
-            return render_template('search.html', books=book.other_books)
+            return render_template('search.html',button="Author", books=book.other_books)
         else:
-            return render_template('search.html', subtitle=f'Did you mean.. {search[1]}', books={})
+            return render_template('search.html',button="Author", subtitle=f'Did you mean.. {search[1]}', books={})
         
-    return render_template('search.html', books={})
+    return render_template('search.html',button="Author", books={})
 
 @app.route("/search_ISBN", methods=['GET', 'POST'])
 def search_ISBN():
@@ -156,8 +156,8 @@ def search_ISBN():
     if request.method=='POST':
         book.key = request.form.get("q")
         book.other_books = ol_isbn(book.key)
-        return render_template('search.html', books=book.other_books)
-    return render_template('search.html', books={})
+        return render_template('search.html',button="ISBN", books=book.other_books)
+    return render_template('search.html',button="ISBN", books={})
 
 @app.route("/search_topics", methods=['GET', 'POST'])
 def search_topics():
@@ -165,8 +165,8 @@ def search_topics():
     if request.method=='POST':
         book.key = request.form.get("q")
         book.other_books = ol_subjects(book.key)
-        return render_template('search.html', books=book.other_books)
-    return render_template('search.html', books={})
+        return render_template('search.html',button="Topics", books=book.other_books)
+    return render_template('search.html',button="Topics", books={})
 
 @app.route("/search_open_ID", methods=['GET', 'POST'])
 def search_open_ID():
@@ -174,9 +174,9 @@ def search_open_ID():
     if request.method=='POST':
         book.key = request.form.get("q")
         book.other_books = ol_work_id(book.key)
-        return render_template('search.html', books=book.other_books)
+        return render_template('search.html',button="ID", books=book.other_books)
         
-    return render_template('search.html', books={})
+    return render_template('search.html',button="ID", books={})
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")

@@ -1,7 +1,7 @@
 <div class="top_search">
     <div class= "searchbar" style="width:800px; margin:0 auto;">
             <div class="drop-down">
-                <button class="drop-down-button">Books</button>
+                <button class="drop-down-button">{{button}}</button>
                 <div class="dcontent">
                 <ul>
                     <a href="/search"> <button class="book_button">Books</button> </a>
@@ -38,6 +38,7 @@
 
 <div class=book_collection>
     {% for key,value in books.items() %}
+<!--             <p>{{key.split('/')[-1].split('.')[0]}}</p> -->
             <a href="/book_page/{{key}}"><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>
             
     {% endfor %}

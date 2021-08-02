@@ -100,13 +100,12 @@ a.article-title:hover {
   text-decoration: none;
 }
 
-/* .home_button2{
+
+.home_button2{
   background-color: #C1C2B4;
+  margin-top:10px;
   padding: 6px;
-  margin-right: 10px;
-  text-decoration: none;
-  position:absolute;
-} */
+}
 
 
 /* style background of search bar */
@@ -218,16 +217,6 @@ a.article-title:hover {
   animation-duration: 1.5s;
 }
 
-/* @-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-} */
-
 .slide_show_container_textbook{
   max-width: 1000px;
   position: relative;
@@ -288,6 +277,7 @@ a.article-title:hover {
 }
 .drop-down-button{
   background-color: #C1C2B4;
+  width: 80px;
   color: black;
   padding: 10px;
   border-color:black
@@ -300,9 +290,9 @@ a.article-title:hover {
 .dcontent{
   display: none;
   position: absolute;
-  margin-left: -47px;
-  text-align:left;
-  right: 320px;
+/*   margin-left: -47px; */
+  text-align:center;
+  right: 330px;
   margin-top: 60px;
 /*   background-color: #C1C2B4; */
 }
