@@ -353,6 +353,13 @@ a.article-title:hover {
 } */
 
 
+/* GENERAL BOOK PAGE */
+.general_page{
+    margin-top:20%;
+    text-align:center;
+    
+}
+
 /****************USER_PAGE**************/
 * {
   box-sizing: border-box;

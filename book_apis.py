@@ -9,10 +9,12 @@ def ol_isbn(isbn):
     result = requests.get('https://openlibrary.org/api/books?bibkeys=ISBN:' +
                           isbn + '&jscmd=data&format=json')
     result_json = result.json()
+
 #     print(result_json)
     data = result_json['ISBN:' + isbn]
     book_title = data['title']
 #     print('Book title: ' + book_title)
+
     authors_str = ''
     authors_list = []
     author_key = 'authors'
@@ -22,7 +24,9 @@ def ol_isbn(isbn):
             authors_list.append(author['name'])
         size = len(authors_str)
         authors = authors_str[:size - 2]
+
 #         print('Author(s): ' + authors)
+
     else:
         authors = 'Information on author(s) not available!'
         authors_list.append("Unknown")
