@@ -8,7 +8,7 @@ from encryption import *
 from book_apis import *
 from bestsellers import *
 from isbndb_prices import get_data
-from databases import new_user
+# from databases import new_user
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '182a078b8ed4e78614ce382d20b0ce1e'
@@ -38,11 +38,12 @@ book = Book()
 @app.route("/")
 @app.route("/home", methods=['GET', 'POST'])
 def home():
+    top_books = homepage_bestsellers()
     if request.method=='POST':
         book.key = request.form.get("q")
         book.other_books = ol_book_names(book.key)
-        return render_template('search.html',button="Books", books=book.other_books)
-    return render_template('home.html')
+        return render_template('search.html',button="Books", books=book.other_books, top_books=top_books)
+    return render_template('home.html',top_books=top_books)
 
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -115,6 +116,7 @@ def user():
     return render_template('user.html', subtitle='User Page',
                            text= theText)
 
+# helper fun for book_page
 def lookforbook(other_books,name):
     for key,value in other_books.items():
         if(name in key ):
@@ -122,17 +124,17 @@ def lookforbook(other_books,name):
     return None, [None,None,None,None] #in case it does not work for now -> make exception later on
             
 
-@app.route("/book_page/<path:key>", methods=['GET','POST'])
+@app.route("/book_page/<path:key>", methods=['GET'])
 def book_page(key):
     cover, book_data = lookforbook(book.other_books,key)
 #     print(book_data[1], book_data[3])
-    author = ''.join(book_data[1])
+#     author = ''.join(book_data[1])
     # [listed_price,lowest_ebook,lowest_used,lowest_new,lowest_rental]  
     prices = get_data(book_data[3])
     if prices==None:
-        return render_template('book_page.html', book_title=book_data[0], author=author, web=book_data[2], cover=cover, recs = book.other_books)
+        return render_template('book_page.html', book_title=book_data[0], author=book_data[1], web=book_data[2], cover=cover, recs = book.other_books)
 
-    return render_template('book_page.html', book_title=book_data[0], author=author, web=book_data[2], cover=cover, recs = book.other_books, prices=prices)
+    return render_template('book_page.html', book_title=book_data[0], author=book_data[1], web=book_data[2], cover=cover, recs = book.other_books, prices=prices)
 
 
 @app.route("/search", methods=['GET', 'POST'])

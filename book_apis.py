@@ -39,6 +39,7 @@ def ol_isbn(isbn):
     else:
         cover_url = 'No cover picture available!'
 #     print(book_title, authors_list, cover_url)
+    authors_list = ''.join(authors_list)
     book_dic[cover_url] = [book_title, authors_list, url, isbn]
     return book_dic
 
