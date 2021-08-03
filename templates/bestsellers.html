@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,83 +18,66 @@
     <link rel="stylesheet" href="css/mdb.min.css" />
   </head>
   <body>
-    <div class="home_img">
-        <div class= "searchnav" style="width:800px; margin:0 auto;">
-    <!--             <button class="drop-down-button_home">Books</button> -->
-            <div class="dcontent_home">
-                <ul>
-                    <a href="/search"> <button class="home_button">Books</button> </a>
-                    <a href="/search_author"> <button class="home_button">Author</button> </a>
-                    <a href="/search_ISBN"> <button class="home_button">ISBN Number</button> </a>
-                    <a href="/search_topics"> <button class="home_button">Topics</button> </a>
-                    <a href="/search_open_ID"> <button class="home_button">ID</button> </a>
-
-                </ul>
-            </div>
-
-            <form method="POST" action="/home" >
-    <!--             <button class ="home_button">Options</button> -->
-                <input type="text" name="q" placeholder="Search Book..">                
-    <!--             <input class ="home_button2" type="submit" name="form" value="Submit"> -->
-            </form>
-        </div>
-    </div>
-
-<!-- TOP BOOKS -->
-<div class="books">
-<h3 style="color:black">Top Books</h3>
-<div class="slide_show_container">
-    <button class= "left" onClick="plusSlides(-1)">&#10094;</button>
-    <button class= "right" onClick="plusSlides(1)">&#10095;</button>
-    <div class="slide_fade"> 
-        {% for key,value in top_books[0].items() %}
-            <a href=""><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>
-            
-        {% endfor %}
-    </div>
-    <div class="slide_fade">
-        {% for key,value in top_books[1].items() %}
-            <a href=""><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>
-            
-        {% endfor %}
-   </div>
-   <div class="slide_fade">
-        {% for key,value in top_books[2].items() %}
-            <a href=""><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>
-            
-        {% endfor %}
-   </div>
-</div>
-</div>
-
-<!-- Register -->
-<div class="to_register">
-    <br>
-    <h3 style="color:black">Join Us</h3>
-    <a href="/registration"><button class="toregister_button">Register</button></a>
-    <a href="/login"><button class="tologIn_button">Log In</button></a>
-
-
-    
-</div>
-
-
-    <div class="p-5 text-center bg-image">
-      <div class="mask" style="background-color: rgba(0, 0, 0, 0);">
-          <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="text-white">
-              <h1 class="mb-3">Don't know where to start?</h1>
-              <h4 class="mb-3">Check below for the New York Times Best Sellers List</h4>
-  <!--             <a class="btn btn-outline-light btn-lg" href="#!" role="button">Call to action</a> -->
-            </div>
+    <!-- Start your project here-->
+    <!-- Background image -->
+    <div
+      class="p-5 text-center bg-image"
+      style="
+        background-image: books.jpg;
+        height: 400px;
+      "
+    >
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-white">
+            <h1 class="mb-3">Heading</h1>
+            <h4 class="mb-3">Subheading</h4>
+            <a class="btn btn-outline-light btn-lg" href="#!" role="button"
+              >Call to action</a
+            >
           </div>
         </div>
       </div>
+    </div>
+    <!-- Background image -->
     
     <!-- Footer -->
     <footer>
       <!-- Grid container -->
       <div class="container p-4">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Facebook -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+
+          <!-- Twitter -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-twitter"></i
+          ></a>
+
+          <!-- Google -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-google"></i
+          ></a>
+
+          <!-- Instagram -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-instagram"></i
+          ></a>
+
+          <!-- Linkedin -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+
+          <!-- Github -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-github"></i
+          ></a>
+        </section>
+        <!-- Section: Social media -->
 
         <!-- Section: Form -->
         <section class="">
@@ -133,32 +116,42 @@
         </section>
         <!-- Section: Form -->
 
+        <!-- Section: Text -->
+        <section class="mb-4">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+            repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+            eum harum corrupti dicta, aliquam sequi voluptate quas.
+          </p>
+        </section>
+        <!-- Section: Text -->
+
         <!-- Section: Links -->
         <section class="">
           <!--Grid row-->
           <div class="row">
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Category</h5>
+              <h5 class="text-uppercase">Links</h5>
 
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="#!" class="text-dark">Combined Print and E-Book Fiction</a>
+                  <a href="#!" class="text-white">Combined Print and E-Book Fiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Combined Print and E-Book Nonfiction</a>
+                  <a href="#!" class="text-white">Combined Print and E-Book Nonfiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Hardcover Fiction</a>
+                  <a href="#!" class="text-white">Hardcover Fiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Hardcover Nonfiction</a>
+                  <a href="#!" class="text-white">Hardcover Nonfiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Chapter Books</a>
+                  <a href="#!" class="text-white">Chapter Books</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Childrens Middle Grade Hardcover</a>
+                  <a href="#!" class="text-white">Childrens Middle Grade Hardcover</a>
                 </li>
                 <li>
                   <a href="#!" class="text-dark">Young Adult Hardcover</a>
@@ -178,41 +171,35 @@
                 <li>
                   <a href="#!" class="text-dark">Mass Market Monthly</a>
                 </li>
-                <li>
-                  <a href="#!" class="text-dark">Family</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-dark">Travel</a>
-                </li>
               </ul>
             </div>
             <!--Grid column-->
 
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Category</h5>
+              <h5 class="text-uppercase">Links</h5>
 
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="#!" class="text-dark">Trade Fiction Paperback</a>
+                  <a href="#!" class="text-white">Trade Fiction Paperback</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Mass Market Paperback</a>
+                  <a href="#!" class="text-white">Mass Market Paperback</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Paperback Nonfiction</a>
+                  <a href="#!" class="text-white">Paperback Nonfiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">E-Book Fiction</a>
+                  <a href="#!" class="text-white">E-Book Fiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Childrens Middle Grade</a>
+                  <a href="#!" class="text-white">Childrens Middle Grade</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Childrens Middle Grade Paperback</a>
+                  <a href="#!" class="text-white">Childrens Middle Grade Paperback</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Paperback Books</a>
+                  <a href="#!" class="text-white">Paperback Books</a>
                 </li>
                 <li>
                   <a href="#!" class="text-dark">Animals</a>
@@ -245,29 +232,29 @@
 
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Category</h5>
+              <h5 class="text-uppercase">Links</h5>
 
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="#!" class="text-dark">E-Book Nonfiction</a>
+                  <a href="#!" class="text-white">E-Book Nonfiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Hardcover Advice</a>
+                  <a href="#!" class="text-white">Hardcover Advice</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Paperback Advice</a>
+                  <a href="#!" class="text-white">Paperback Advice</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Advice How-To and Miscellaneous</a>
+                  <a href="#!" class="text-white">Advice How-To and Miscellaneous</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Childrens Middle Grade E-Book</a>
+                  <a href="#!" class="text-white">Childrens Middle Grade E-Book</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Picture Books</a>
+                  <a href="#!" class="text-white">Picture Books</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Series Books</a>
+                  <a href="#!" class="text-white">Series Books</a>
                 </li>
                 <li>
                   <a href="#!" class="text-dark">Celebrities</a>
@@ -293,36 +280,38 @@
                 <li>
                   <a href="#!" class="text-dark">Sports</a>
                 </li>
-                
+                <li>
+                  <a href="#!" class="text-dark">Travel</a>
+                </li>
               </ul>
             </div>
             <!--Grid column-->
 
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Category</h5>
+              <h5 class="text-uppercase">Links</h5>
 
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="#!" class="text-dark">Hardcover Graphic Books</a>
+                  <a href="#!" class="text-white">Hardcover Graphic Books</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Paperback Graphic Book</a>
+                  <a href="#!" class="text-white">Paperback Graphic Book</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Manga</a>
+                  <a href="#!" class="text-white">Manga</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Combined Print Fiction</a>
+                  <a href="#!" class="text-white">Combined Print Fiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Combined Print Nonfiction</a>
+                  <a href="#!" class="text-white">Combined Print Nonfiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Young Adult</a>
+                  <a href="#!" class="text-white">Young Adult</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Young Adult E-Book</a>
+                  <a href="#!" class="text-white">Young Adult E-Book</a>
                 </li>
                 <li>
                   <a href="#!" class="text-dark">Espionage</a>
@@ -345,7 +334,9 @@
                 <li>
                   <a href="#!" class="text-dark">Paperback Business Books</a>
                 </li>
-                
+                <li>
+                  <a href="#!" class="text-dark">Family</a>
+                </li>
               </ul>
             </div>
             <!--Grid column-->
@@ -369,62 +360,12 @@
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
+  </body>
+</html>
 
-<!-- SOURCE: https://www.w3schools.com/howto/howto_js_slideshow.asp -->
-<script> 
-    var slideIndex = 1;
-    showSlides(slideIndex);
-
-    // Next/previous controls
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
-
-    // Thumbnail image controls
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("slide_fade");
-      if (n > slides.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      slides[slideIndex-1].style.display = "block";
-//       dots[slideIndex-1].className += " active";
-    }
-    
-// //     SECOND slideshow
-//      var slideIndex2 = 1;
-//     showSlides2(slideIndex2);
-
-//     // Next/previous controls
-//     function plusSlides2(n) {
-//       showSlides2(slideIndex2 += n);
-//     }
-
-//     // Thumbnail image controls
-//     function currentSlide2(n) {
-//       showSlides2(slideIndex2 = n);
-//     }
-
-//     function showSlides2(n) {
-//       var i;
-//       var slides = document.getElementsByClassName("slide_fade2");
-//       if (n > slides.length) {slideIndex2 = 1}
-//       if (n < 1) {slideIndex2 = slides.length}
-//       for (i = 0; i < slides.length; i++) {
-//           slides[i].style.display = "none";
-//       }
-//       slides[slideIndex2-1].style.display = "block";
-//     }   
-   
-</script>
-</body>
 
 {% extends "layout.html" %}
 {% block content %}
+    <h2>{{ subtitle }}</h2>
+    <h2>{{ text }}</h2>
 {% endblock content %}

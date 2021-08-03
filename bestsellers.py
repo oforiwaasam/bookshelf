@@ -6,12 +6,12 @@ def bestsellers_category():
   url = 'https://api.nytimes.com/svc/books/v3/lists/names.json?&api-key=' + config.api_key
   response = requests.get(url)
   results = response.json()['results']
-  # for name_dict in results:
-  #   print(name_dict['list_name'] + ': ' + name_dict['list_name_encoded'])
+  for name_dict in results:
+    print(name_dict['list_name'] + ': ' + name_dict['list_name_encoded'])
   
 
 def select_category():
-  # user_input = input('Enter a book category: ')
+  user_input = input('Enter a book category: ')
   url = 'https://api.nytimes.com/svc/books/v3/lists/current/' + user_input + '.json?&api-key=' + config.api_key
 
   output = requests.get(url)

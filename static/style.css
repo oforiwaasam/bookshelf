@@ -1,0 +1,136 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.section_subtitle {
+  font-size: 50px;
+  font-weight: 600;
+  padding-bottom: 15px;
+  margin-bottom: 60px;
+  position: relative;
+  text-align: center;
+  color: black;
+}
+
+.section_subtitle::after {
+  content: '';
+  position: absolute;
+  height: 3px;
+  width: 170px;
+  background-color: black;
+  bottom: 0;
+  left: 50%;
+  transform: translatex(-50%);
+}
+
+.team {
+  width: 1300px;
+  padding: 100px 50px;
+  margin: auto;
+}
+
+.team h1 {
+  font-size: 50px;
+  font-weight: 600;
+  padding-bottom: 15px;
+  margin-bottom: 60px;
+  position: relative;
+  text-align: center;
+  color: black;
+}
+
+/* line below our team */
+.team h1::after {
+  content: '';
+  position: absolute;
+  height: 3px;
+  width: 170px;
+  background-color: black;
+  bottom: 0;
+  left: 50%;
+  transform: translatex(-50%);
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+}
+
+.card {
+  cursor: pointer;
+  position: relative;
+  backface-visibility: hidden;
+}
+
+.box {
+  transform: perspective(600px) rotateY(0deg);
+  transition: all 0.5s;
+  
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  color: #111;
+  text-align: center;
+  padding: 22% 0;
+  backface-visibility: hidden;
+  transform: perspective(600px) rotateY(180deg);
+  transition: all 0.5s;
+}
+
+.info h2 {
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.info h4 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.col-half-offset {
+  margin-left: 4.166666667%;
+}
+
+.social i {
+  font-size: 24px;
+  color: black;
+  background-color: white;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  line-height: 40px;
+  box-shadow: 0 0 10px 2px rgb(0 0 0 / 50%);
+  margin: 7px 1px;
+  transition: all 0.3s ease;
+}
+
+.social i:hover {
+  background-color: #222;
+  color: #fff;
+}
+
+.card:hover .box {
+  transform: perspective(600px) rotate(-180deg);
+}
+
+.card:hover .info{
+  transform: perspective(600px) rotate(0deg);
+}
+

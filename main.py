@@ -189,6 +189,17 @@ def search_open_ID():
         return render_template('search.html',button="ID", books=book.other_books)
         
     return render_template('search.html',button="ID", books={})
+  
+@app.route("/bestsellers", methods=['GET', 'POST'])
+def bestsellers():
+    print("search_open_ID")
+    if request.method=='POST':
+        book.key = request.form.get("q")
+        book.other_books = ol_work_id(book.key)
+        return render_template('bestsellers.html', books=book.other_books)
+        
+    return render_template('bestsellers.html', books={})
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
