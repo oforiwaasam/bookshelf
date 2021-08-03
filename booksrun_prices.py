@@ -43,13 +43,15 @@ def get_booksrun_paperbook_prices(json_booksrun):
     buy_used = None
 
     if json_booksrun != None:
+      buy_used = {}
       if json_booksrun['used'] != 'none':
-          buy_used = json_booksrun['used']['price'], json_booksrun['used']['cart_url']
+          buy_used['BooksRun.com'] = json_booksrun['used']['price'], json_booksrun['used']['cart_url']
 
     buy_new = None
     if json_booksrun != None:
+      buy_new = {}
       if json_booksrun['new'] != 'none':
-          buy_new = json_booksrun['new']['price'], json_booksrun['new']['cart_url']
+          buy_new['BooksRun.com'] = json_booksrun['new']['price'], json_booksrun['new']['cart_url']
 
 
     return buy_used, buy_new
@@ -70,7 +72,8 @@ def get_others_paperbook_prices(json_marketplace):
                 key = 'condition'
                 if key in element['used']:
                   del element['used']['condition']
-                price_and_url = element['used']['price'], element['used']['cart_url']
+                price_and_url = {}
+                price_and_url['BooksRun.com'] = element['used']['price'], element['used']['cart_url']
                 buy_used.append(price_and_url)
 
         buy_new = []
@@ -81,7 +84,8 @@ def get_others_paperbook_prices(json_marketplace):
                 key = 'condition'
                 if key in element['new']:
                   del element['new']['condition']
-                price_and_url = element['new']['price'], element['new']['cart_url']
+                price_and_url = {}
+                price_and_url['BooksRun.com'] = element['new']['price'], element['new']['cart_url']
                 buy_used.append(price_and_url)
 
         return buy_used, buy_new
@@ -95,9 +99,11 @@ def get_ebook_prices(json_booksrun):
     ebook = None
     if json_booksrun != None:
       if json_booksrun['ebook'] != 'none' and json_booksrun['ebook'] != None:
-          ebook = {}
+          ebook = []
           for length, info in json_booksrun['ebook'].items():
-              ebook[length] = json_booksrun['ebook'][length]['price'], json_booksrun['ebook'][length]['cart_url']
+              to_append = {}
+              to_append['BooksRun.com'] = json_booksrun['ebook'][length]['price'], json_booksrun['ebook'][length]['cart_url']
+              ebook.append(to_append)
 
       return ebook
     else:
@@ -108,10 +114,12 @@ def get_rentals_prices(json_booksrun):
     rent = None
     if json_booksrun != None:
       if json_booksrun['rent'] != 'none':
-          rent = {}
+          rent = []
           for days, info in json_booksrun['rent'].items():
-              rent[days] = json_booksrun['rent'][days]['price'], json_booksrun['rent'][days]['cart_url']
-  
+            to_append = {}
+            to_append['BooksRun.com'] = json_booksrun['rent'][days]['price'], json_booksrun['rent'][days]['cart_url']
+            rent.append(to_append)
+            
       return rent
     else:
       return None
@@ -128,8 +136,8 @@ def used_lowest_price(bookrun_paper_prices, third_party_prices):
           for pair in third_party_prices[0]:
             lowest_price.append(pair)
     
-    if lowest_price != []:
-        lowest_price.sort()
+    if lowest_price != [{}]:
+        sorted(lowest_price, key = lambda item: item['BooksRun.com'][0])
         return lowest_price[0]
     else:
       return None
@@ -146,8 +154,9 @@ def new_lowest_price(bookrun_paper_prices, third_party_prices):
           for pair in third_party_prices[1]:
             lowest_price.append(pair)
     
-    if lowest_price != []:
-        lowest_price.sort()
+    if lowest_price != [{}]:
+        print(lowest_price)
+        sorted(lowest_price, key = lambda item: item['BooksRun.com'][0])
         return lowest_price[0]
     else:
         return None
@@ -156,12 +165,13 @@ def new_lowest_price(bookrun_paper_prices, third_party_prices):
 # compares all the prices of rentals or ebooks offered by Booksrun and returns the lowest
 def ebook_or_rental_lowest(prices):
   if prices is not None:
-    lowest_price = (100000, "")
-    for key, value in prices.items():
-      if float(value[0]) < float(lowest_price[0]):
+    lowest_price = {'BooksRun.com': (100000, "")}
+    for value in prices:
+      price = value['BooksRun.com'][0]
+      if float(price) < float(lowest_price['BooksRun.com'][0]):
           lowest_price = value
   
-    if lowest_price[0] != 100000:
+    if lowest_price['BooksRun.com'] [0]!= 100000:
       return lowest_price
     else:
       return None
