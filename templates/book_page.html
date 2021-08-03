@@ -7,14 +7,32 @@
     <br>
     <a href={{web}}> <button class="book_button">For More Information</button></a>
     <br>
-    {% for data in prices %}
-        <a href={{data[2]}}> {{data[0]}}</a>
-        <p>${{data[1]}}</p>      
-    {% endfor %}
-    <br>
     <p>Description Here</p>
+    <div class="dcontent_home">
+        <ul>
+            {% for data in prices %}
+            
+                    <a href={{data[2]}}> <button class="home_button">
+                        <p>{{data[3]}}</p>
+                        <br>
+                        {{data[0]}}
+                        <br>
+                        <p>${{data[1]}}</p>
+                        </button> </a>
+<!--                     <p>{{data[3]}}</p>
+                    <a href={{data[2]}}> {{data[0]}}</a>
+                    <p>${{data[1]}}</p>   -->
+ 
+            {% endfor %}
+        </ul>
+    </div>
+    
     <br>
+    <br>
+</div>
+<div class="other_books">
     <h5>Other Related Books</h5>
+    <br>
     {% for key,value in recs.items() %}
         <a href="/book_page/{{key}}"><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>     
         
