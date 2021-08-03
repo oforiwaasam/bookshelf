@@ -115,7 +115,8 @@ def user():
              
             
     return render_template('user.html', subtitle='User Page',
-                           text= theText)
+                           text= theText, 
+                           username=log_manage.get_username())
 
 # helper fun for book_page
 def lookforbook(other_books,name):
