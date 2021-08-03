@@ -524,191 +524,113 @@ a.article-title:hover {
 body {
   font-size: 14px;
 }
-.v42_58 {
-  width: 100%;
-  height: 2389px;
-  background: rgba(243,220,212,1);
-  opacity: 1;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-}
-.v97_8 {
-  width: 100%;
-  height: 656px;
-  background: url("../images/v97_8.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 132px;
-  left: 45px;
-  overflow: hidden;
-}
-.v97_7 {
-  width: 100%;
+
+.user_back_img {
+  margin: auto;
+  margin-top: 132px;
+  width: 90%;
   height: 656px;
   background: rgba(209,207,192,1);
   opacity: 1;
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  padding: 10px;
+    
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   overflow: hidden;
+    
 }
-.v42_60 {
+
+
+/*Hold centered profile info*/
+.profile_class{
+  margin: 0 auto;
   width: 252px;
   height: 233px;
-  background: rgba(194,194,180,1);
+  /*Temp to see positioning*/
+  /*background: rgba(50,50,50,1);*/
   opacity: 1;
-  position: absolute;
-  top: 63px;
-  left: 526px;
-  border-radius: 50%;
-}
-.v42_64 {
-  width: 100%;
-  height: 338px;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: absolute;
-  top: 868px;
-  left: 20px;
-  border: 1px solid rgba(0,0,0,1);
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   overflow: hidden;
 }
-.v42_65 {
-  width: 271px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 804px;
-  left: 45px;
-  font-family: Sahitya;
-  font-weight: Regular;
-  font-size: 40px;
+
+/* Hold favorite images */
+div.second_row{
+  /*Temp to see positioning*/
+  /*background: rgba(0,50,50,1);*/
   opacity: 1;
-  text-align: left;
+
 }
-.v42_66 {
-  width: 250px;
-  height: 209px;
-  background: rgba(56,87,121,1);
+
+/*Hold centered Favorite genre*/
+.fav_genre_class{
+  width: 252px;
+  height: 233px;
+  float: right
+  /*Temp to see positioning*/
+  background: rgba(50,50,50,1);
+  opacity: 1;
+  margin-left: auto
+
+  overflow: hidden;
+}
+
+/*Hold centered topic genre*/
+.fav_topic_class{
+  width: 252px;
+  height: 233px;
+  float: left
+  /*Temp to see positioning*/
+  background: rgba(50,50,50,1);
+  opacity: 1;
+
+  overflow: hidden;
+}
+
+.round_img {
+    
+  margin :0 auto;
+  width: 252px;
+  height: 233px;
+  background: rgba(200,194,180,1);
   opacity: 1;
   position: absolute;
-  top: 474px;
-  left: 111px;
   border-radius: 50%;
+    
+  border: none;
+    
 }
-.v42_67 {
-  width: 197px;
+
+.title_txt {
+  width: 252px;
+  height: 233px;
   color: rgba(0,0,0,1);
   position: absolute;
-  top: 428px;
-  left: 129px;
-  font-family: Sahitya;
-  font-weight: Regular;
-  font-size: 25px;
-  opacity: 1;
-  text-align: left;
-}
-.v42_68 {
-  width: 250px;
-  height: 209px;
-  background: rgba(56,87,121,1);
-  opacity: 1;
-  position: absolute;
-  top: 474px;
-  left: 1057px;
-  border-radius: 50%;
-}
-.v42_69 {
-  width: 296px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 428px;
-  left: 1034px;
-  font-family: Sahitya;
-  font-weight: Regular;
-  font-size: 25px;
-  opacity: 1;
-  text-align: left;
-}
-.v42_70 {
-  width: 392px;
-  height: 52px;
-  background: url("../images/v42_70.png");
-  opacity: 1;
-  position: absolute;
-  top: 700px;
-  left: 508px;
-  border-radius: 50%;
-}
-.v97_9 {
-  width: 386px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 474px;
-  left: 504px;
-  font-family: Sahitya;
-  font-weight: Regular;
-  font-size: 25px;
-  opacity: 1;
-  text-align: center;
-}
-.v97_10 {
-  width: 386px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 449px;
-  left: 504px;
   font-family: Sahitya;
   font-weight: Regular;
   font-size: 35px;
   opacity: 1;
+  text-align: center; 
+  bottom: 50;
+}
+.message_txt {
+  width: 252px;
+  height: 233px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  font-family: Sahitya;
+  font-weight: Regular;
+  font-size: 25px;
+  opacity: 1;
   text-align: center;
+    
+  bottom: 0;
 }
 
-.v103_2 {
-  width: 194px;
-  height: 250px;
-  background: rgba(194,194,180,1);
-  opacity: 1;
-  position: absolute;
-  top: 906px;
-  left: 375px;
-  overflow: hidden;
-}
-.v103_4 {
-  width: 194px;
-  height: 250px;
-  background: rgba(194,194,180,1);
-  opacity: 1;
-  position: absolute;
-  top: 906px;
-  left: 869px;
-  overflow: hidden;
-}
-.v103_5 {
-  width: 194px;
-  height: 250px;
-  background: rgba(194,194,180,1);
-  opacity: 1;
-  position: absolute;
-  top: 906px;
-  left: 1116px;
-  overflow: hidden;
-}
-.v103_3 {
-  width: 194px;
-  height: 250px;
-  background: rgba(194,194,180,1);
-  opacity: 1;
-  position: absolute;
-  top: 906px;
-  left: 622px;
-  overflow: hidden;
-}
+
 .vbook_clublist {
   width: 100%;
   height: 338px;
@@ -718,79 +640,5 @@ body {
   top: 1300px;
   left: 28px;
   border: 1px solid rgba(0,0,0,1);
-  overflow: hidden;
-}
-
-.v103_9 {
-  width: 194px;
-  height: 250px;
-  background: rgba(194,194,180,1);
-  opacity: 1;
-  position: absolute;
-  top: 906px;
-  left: 128px;
-  overflow: hidden;
-}
-.v103_12 {
-  width: 194px;
-  height: 250px;
-  background: rgba(194,194,180,1);
-  opacity: 1;
-  position: absolute;
-  top: 1338px;
-  left: 383px;
-  overflow: hidden;
-}
-.v103_11 {
-  width: 271px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 1236px;
-  left: 53px;
-  font-family: Sahitya;
-  font-weight: Regular;
-  font-size: 40px;
-  opacity: 1;
-  text-align: left;
-}
-.v103_13 {
-  width: 194px;
-  height: 250px;
-  background: rgba(194,194,180,1);
-  opacity: 1;
-  position: absolute;
-  top: 1338px;
-  left: 630px;
-  overflow: hidden;
-}
-.v103_15 {
-  width: 194px;
-  height: 250px;
-  background: rgba(194,194,180,1);
-  opacity: 1;
-  position: absolute;
-  top: 1338px;
-  left: 1124px;
-  overflow: hidden;
-}
-.v103_14 {
-  width: 194px;
-  height: 250px;
-  background: rgba(194,194,180,1);
-  opacity: 1;
-  position: absolute;
-  top: 1338px;
-  left: 877px;
-  overflow: hidden;
-}
-
-.v103_18 {
-  width: 194px;
-  height: 250px;
-  background: rgba(194,194,180,1);
-  opacity: 1;
-  position: absolute;
-  top: 1338px;
-  left: 136px;
   overflow: hidden;
 }
