@@ -8,7 +8,8 @@ from encryption import *
 from book_apis import *
 from bestsellers import *
 from isbndb_prices import get_data
-# from databases import new_user
+from databases import *
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '182a078b8ed4e78614ce382d20b0ce1e'
@@ -141,6 +142,10 @@ def book_page(key):
 def search():
     if request.method=='POST':
         book.key = request.form.get("q")
+        if log_manage.is_logged_in():
+            username = log_manage.get_username()
+            update_search_history(username, 'Book', book.key)
+
         book.other_books = ol_book_names(book.key)
 #         book.name = "Book1"
 #         book.other_books = {"Book1":["book_title", "authors_list", "cover_url", "url"], "Book2":["book_title", "authors_list", "cover_url", "url"], "Book3":["book_title", "authors_list", "cover_url", "url"],"Book32":["book_title", "authors_list", "cover_url", "url"]}
@@ -152,6 +157,11 @@ def search():
 def search_author():
     if request.method=='POST':
         book.key = request.form.get("q")
+        
+        if log_manage.is_logged_in():
+            username = log_manage.get_username()
+            update_search_history(username, 'Author', book.key)
+        
         search = ol_authors(book.key)
         if(search[0]==0):
             book.other_books = search[1]
@@ -167,6 +177,11 @@ def search_ISBN():
     print("search_ISBN")
     if request.method=='POST':
         book.key = request.form.get("q")
+        
+        if log_manage.is_logged_in():
+            username = log_manage.get_username()
+            update_search_history(username, 'ISBN', book.key)
+        
         book.other_books = ol_isbn(book.key)
         return render_template('search.html',button="ISBN", books=book.other_books)
     return render_template('search.html',button="ISBN", books={})
@@ -176,6 +191,11 @@ def search_topics():
     print("search_topics")
     if request.method=='POST':
         book.key = request.form.get("q")
+        
+        if log_manage.is_logged_in():
+            username = log_manage.get_username()
+            update_search_history(username, 'Topic', book.key)
+        
         book.other_books = ol_subjects(book.key)
         return render_template('search.html',button="Topics", books=book.other_books)
     return render_template('search.html',button="Topics", books={})
