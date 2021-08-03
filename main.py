@@ -6,6 +6,7 @@ from forms import RegistrationForm, LoginForm
 from login_manager import Login_Manager
 from encryption import *
 from book_apis import *
+from bestsellers import *
 from databases import new_user
 
 app = Flask(__name__)
@@ -177,6 +178,16 @@ def search_open_ID():
         return render_template('search.html', books=book.other_books)
         
     return render_template('search.html', books={})
+  
+@app.route("/bestsellers", methods=['GET', 'POST'])
+def bestsellers():
+    print("search_open_ID")
+    if request.method=='POST':
+        book.key = request.form.get("q")
+        book.other_books = ol_work_id(book.key)
+        return render_template('bestsellers.html', books=book.other_books)
+        
+    return render_template('bestsellers.html', books={})
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
