@@ -1,16 +1,18 @@
-import smtplib, ssl
+import yagmail
 
-port = 465  # For SSL
-smtp_server = "smtp.gmail.com"
-sender_email = "bookshelfaacdl@gmail.com"
-receiver_email = "axelshalom3@gmail.com"  # Enter receiver address
-password = input("Type your password and press enter: ")
-message = """\
-Subject: Hi there
 
-This message is sent from Python."""
+receiver = "axelshalom3@gmail.com"
+body = "Thank you for registering with Bookshelf!"
+subject = "Successful Registration!"
+html = '<a href="https://bookshelfaacdl.herokuapp.com/"><br />Bookshelf</a>'
 
-context = ssl.create_default_context()
-with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-    server.login(sender_email, password)
-    server.sendmail(sender_email, receiver_email, message)
+def sending_email(receiver, subj, body, html):
+
+  yag = yagmail.SMTP("bookshelfaacdl", "&UD0$r?zirEHS'")
+  yag.send(
+      to=receiver,
+      subject=subj,
+      contents=[body, html]
+  )
+
+#sending_email(receiver, subject, body, html)
