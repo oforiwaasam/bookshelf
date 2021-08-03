@@ -150,10 +150,5 @@ def main():
     print("No Results: You've probably entered a wrong ISBN")
 
 
-<<<<<<< HEAD
 # main()
-=======
-
-main()
->>>>>>> 8d92c969f5ee13868bc340f0fd5b321e87d01e54
   
