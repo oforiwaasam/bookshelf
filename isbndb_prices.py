@@ -88,33 +88,34 @@ def setprices(prices):
             data.append((key,value[0],value[1]))
     return data
 def get_data(ISBN):
-    api_key = "46445_4b9207100f7b3236200445a31f95a377"
-    json = i_api_response(api_key, ISBN)
-    data = []
-    if json is not None:
-#         print(f"Prices from different merchants: {json['prices']}")
-#         print("\n")
-        listed_price = i_listed_price(json)
-        lowest_ebook = i_lowest_ebook_price(json)
-#         print(f"Lowest price for ebook: {lowest_ebook}")
-#         print("\n")
-        lowest_used = i_lowest_used_price(json)
-#         print(f"lowest price for used books: {lowest_used}")
-#         print("\n")
-        lowest_new = i_lowest_new_price(json)
-#         print(f"Lowest price for new books: {lowest_new}")
-#         print("\n")
-        lowest_rental = i_lowest_rental_price(json)
-#         print(f"Lowest price for rented books: {lowest_rental}")
-        # [listed_price,lowest_ebook,lowest_used,lowest_new,lowest_rental]  
-        temp = [lowest_ebook,lowest_used,lowest_new,lowest_rental]
-        for elem in temp:
-            if elem != None:
-                data.append(elem)
-                       
-        return setprices(data)
-    else:
-        print("No Results: You've probably entered a wrong ISBN")  
+    if ISBN is not None:
+        api_key = "46445_4b9207100f7b3236200445a31f95a377"
+        json = i_api_response(api_key, ISBN)
+        data = []
+        if json is not None:
+    #         print(f"Prices from different merchants: {json['prices']}")
+    #         print("\n")
+            listed_price = i_listed_price(json)
+            lowest_ebook = i_lowest_ebook_price(json)
+    #         print(f"Lowest price for ebook: {lowest_ebook}")
+    #         print("\n")
+            lowest_used = i_lowest_used_price(json)
+    #         print(f"lowest price for used books: {lowest_used}")
+    #         print("\n")
+            lowest_new = i_lowest_new_price(json)
+    #         print(f"Lowest price for new books: {lowest_new}")
+    #         print("\n")
+            lowest_rental = i_lowest_rental_price(json)
+    #         print(f"Lowest price for rented books: {lowest_rental}")
+            # [listed_price,lowest_ebook,lowest_used,lowest_new,lowest_rental]  
+            temp = [lowest_ebook,lowest_used,lowest_new,lowest_rental]
+            for elem in temp:
+                if elem != None:
+                    data.append(elem)
+
+            return setprices(data)
+        else:
+            print("No Results: You've probably entered a wrong ISBN")  
 
     
 def main():

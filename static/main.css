@@ -1,11 +1,12 @@
 body {
   background: #F3DCD4;
-  color: #333333;
+  color: #000000;
   margin-top: 5rem;
+  font-weight: 500;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #444444;
+  color: #116466;
 }
 
 .bg-steel {
@@ -94,7 +95,7 @@ a.article-title:hover {
   position: relative;
 }
 .home_button{
-  background-color: #C1C2B4;
+  background-color: #C5CBE3;
   padding: 6px;
   margin-right: 10px;
   text-decoration: none;
@@ -102,7 +103,7 @@ a.article-title:hover {
 
 
 .home_button2{
-  background-color: #C1C2B4;
+  background-color: #C5CBE3;
   margin-top:10px;
   padding: 6px;
 }
@@ -151,12 +152,12 @@ a.article-title:hover {
 .book_button{
     border: 0px;   
 /*     width; 200px; */
-    background-color: #C1C2B4;
+    background-color: #C5CBE3;
 
 }
 
 .books{
-  margin-top:2%;
+  margin-top:5%;
   text-align:center;  
 }
 
@@ -184,7 +185,7 @@ a.article-title:hover {
 
 .right {
   float: right;
-  background-color: #C1C2B4;
+  background-color: #C5CBE3;
   color: #896363;
   top: 50%;
   width: auto;
@@ -195,7 +196,7 @@ a.article-title:hover {
 
 .left {
   float: left;
-  background-color: #C1C2B4;
+  background-color: #C5CBE3;
   color: #896363;
   top: 50%;
   width: auto;
@@ -233,6 +234,113 @@ a.article-title:hover {
   text-align:center;
   text-emphasis-color: black;
 }
+.to_register{
+  margin-top: 5%;
+  background-image: url("open_book.jpg");
+  background-color: #ba5d5d;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  text-align:center;
+}
+
+.to_register{
+  margin-top: 5%;
+  background-image: url("open_book.jpg");
+  background-color: #ba5d5d;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.toregister_button{
+  position: absolute;
+  font-size: 1.2rem;
+/*   top: 50%;
+  left: 50%; */
+  top: 50%;
+  left:20%;
+  height: 90px;
+  min-width: 90px;
+  background-color: #C5CBE3;  
+  border-radius: 2%;
+/*   line-height: 180px; */
+  text-align: center;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  color: black;
+}
+.toregister_button:hover {
+  cursor: pointer;
+  animation-name: bounce;
+  -moz-animation-name: bounce;
+}
+.tologIn_button{
+  position: absolute;
+  font-size: 1.2rem;
+/*   top: 50%;
+  left: 50%; */
+  top: 30%;
+  left:20%;
+  height: 90px;
+  min-width: 90px;
+  background-color: #C5CBE3;  
+  border-radius: 2%;
+/*   line-height: 180px; */
+/*   text-align: center; */
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  color: black;
+}
+.tologIn_button:hover {
+  cursor: pointer;
+  animation-name: bounce;
+  -moz-animation-name: bounce;
+}
+@keyframes bounce {
+	0%, 100%, 20%, 50%, 80% {
+		-webkit-transform: translateY(0);
+		-ms-transform:     translateY(0);
+		transform:         translateY(0)
+	}
+	40% {
+		-webkit-transform: translateY(-30px);
+		-ms-transform:     translateY(-30px);
+		transform:         translateY(-30px)
+	}
+	60% {
+		-webkit-transform: translateY(-15px);
+		-ms-transform:     translateY(-15px);
+		transform:         translateY(-15px)
+	}
+}
+
+.to_bsellers{
+  margin-top: 5%;
+  background-image: url("books.jpg");
+  background-color: #ba5d5d;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;   
+}
 
 /* SEARCH PAGE */
 .top_search{
@@ -252,7 +360,7 @@ a.article-title:hover {
 /*   background-color: #C1C2B4; */
 }
 .searchbar_button{
-  background-color: #C1C2B4;
+  background-color: #C5CBE3;
   color: black;
   padding: 10px;
   border-color:black
@@ -276,7 +384,7 @@ a.article-title:hover {
   display: inline-block; 
 }
 .drop-down-button{
-  background-color: #C1C2B4;
+  background-color: #C5CBE3;
   width: 80px;
   color: black;
   padding: 10px;
@@ -309,7 +417,7 @@ a.article-title:hover {
 .book_button{
     border: 0px;   
 /*     width; 200px; */
-    background-color: #C1C2B4;
+    background-color: #C5CBE3;
 
 }
 

@@ -27,22 +27,40 @@
     <button class= "left" onClick="plusSlides(-1)">&#10094;</button>
     <button class= "right" onClick="plusSlides(1)">&#10095;</button>
     <div class="slide_fade"> 
-        <img src="https://covers.openlibrary.org/b/id/10528214-L.jpg" alt="Book1" width="200" height="300">
-        <img src="https://www.portersquarebooks.com/sites/portersquarebooks.com/files/teaspoonearthandsea.jpg" alt="Book1" width="200" height="300">
-        <img src="https://covers.openlibrary.org/b/id/10528214-L.jpg" alt="Book1" width="200" height="300">
-        <img src="https://www.portersquarebooks.com/sites/portersquarebooks.com/files/teaspoonearthandsea.jpg" alt="Book1" width="200" height="300">
+        {% for key,value in top_books[0].items() %}
+            <a href=""><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>
+            
+        {% endfor %}
     </div>
     <div class="slide_fade">
-        <img src="https://covers.openlibrary.org/b/id/10528214-L.jpg" alt="Book1" width="200" height="300">
-        <img src="https://www.portersquarebooks.com/sites/portersquarebooks.com/files/teaspoonearthandsea.jpg" alt="Book1" width="200" height="300">
-        <img src="https://www.portersquarebooks.com/sites/portersquarebooks.com/files/teaspoonearthandsea.jpg" alt="Book1" width="200" height="300">
-        <img src="https://covers.openlibrary.org/b/id/10528214-L.jpg" alt="Book1" width="200" height="300">
+        {% for key,value in top_books[1].items() %}
+            <a href=""><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>
+            
+        {% endfor %}
+   </div>
+   <div class="slide_fade">
+        {% for key,value in top_books[2].items() %}
+            <a href=""><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>
+            
+        {% endfor %}
    </div>
 </div>
 </div>
 
+<!-- Register -->
+<div class="to_register">
+    <br>
+    <h3 style="color:black">Join Us</h3>
+    <a href="/registration"><button class="toregister_button">Register</button></a>
+    <a href="/login"><button class="tologIn_button">Log In</button></a>
+
+
+    
+</div>
+
+
 <!-- MOST SEARCHED FOR TEXTBOOKS -->
-<div class="textbooks">
+<!-- <div class="textbooks">
 <h3 style="color:black">Most Searched For Textbooks</h3>
 <div class="slide_show_container_textbook">
     <button class= "left" onClick="plusSlides2(-1)">&#10094;</button>
@@ -60,14 +78,8 @@
     <img src="https://covers.openlibrary.org/b/id/10528214-L.jpg" alt="Book1" width="200" height="300">
     </div>
 </div>
-</div>
+</div> -->
 
-<!-- MISSION STATEMENT  -->
-<div class="Mission">
-    <h1>Mission Statment </h1>
-    <p style="font-size:20px"> Whether you're in college or simply enjoy reading, we strive to provide the best access to your favorite books and textbooks.</p>
-    <p style="font-size:20px"> Rest Of Statement Here</p>
-</div>
 
 <!-- SOURCE: https://www.w3schools.com/howto/howto_js_slideshow.asp -->
 <script> 
@@ -96,30 +108,30 @@
 //       dots[slideIndex-1].className += " active";
     }
     
-//     SECOND slideshow
-     var slideIndex2 = 1;
-    showSlides2(slideIndex2);
+// //     SECOND slideshow
+//      var slideIndex2 = 1;
+//     showSlides2(slideIndex2);
 
-    // Next/previous controls
-    function plusSlides2(n) {
-      showSlides2(slideIndex2 += n);
-    }
+//     // Next/previous controls
+//     function plusSlides2(n) {
+//       showSlides2(slideIndex2 += n);
+//     }
 
-    // Thumbnail image controls
-    function currentSlide2(n) {
-      showSlides2(slideIndex2 = n);
-    }
+//     // Thumbnail image controls
+//     function currentSlide2(n) {
+//       showSlides2(slideIndex2 = n);
+//     }
 
-    function showSlides2(n) {
-      var i;
-      var slides = document.getElementsByClassName("slide_fade2");
-      if (n > slides.length) {slideIndex2 = 1}
-      if (n < 1) {slideIndex2 = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      slides[slideIndex2-1].style.display = "block";
-    }   
+//     function showSlides2(n) {
+//       var i;
+//       var slides = document.getElementsByClassName("slide_fade2");
+//       if (n > slides.length) {slideIndex2 = 1}
+//       if (n < 1) {slideIndex2 = slides.length}
+//       for (i = 0; i < slides.length; i++) {
+//           slides[i].style.display = "none";
+//       }
+//       slides[slideIndex2-1].style.display = "block";
+//     }   
    
 </script>
 

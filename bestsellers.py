@@ -28,7 +28,7 @@ def select_category():
     book_image = book['book_image']
     buy_links = book['buy_links']
 
-    print(rank, isbn10, isbn13, publisher, title, author, book_image, buy_links)
+#     print(rank, isbn10, isbn13, publisher, title, author, book_image, buy_links)
     
     
 def homepage_bestsellers():
@@ -36,7 +36,14 @@ def homepage_bestsellers():
   response = requests.get(homepage_url)
   book_list = response.json()
   book_dic = {}
+  count = 0
+  home_book_lst = []
   for book in book_list['results']['books']:
+#     print(count)
+    if(count==3):
+        count=0
+        home_book_lst.append(book_dic)
+        book_dic={}
     rank = book['rank']
     isbn10 = book['primary_isbn10']
     isbn13 = book['primary_isbn13']
@@ -44,17 +51,22 @@ def homepage_bestsellers():
     title = book['title']
     author = book['author']
     book_image = book['book_image']
-    buy_links = book['buy_links']
-  
+    buy_links = book['buy_links'] 
     book_dic[book_image] = [title, author, buy_links]
+    count+=1
   #print(book_list['results']['books'])
-  print(book_dic)
-  return book_dic
-
+#   print(book_dic)
+  return home_book_lst
 
 def main():
-  homepage_bestsellers()
+#   data = homepage_bestsellers()
+#   for key,value in data[0].items():
+#         print(value[2][0]['url']) #gets url
+#         print(key)#gets cover
+  print(data[0])
+  
 
   
 if __name__ == "__main__":
   main()
+
