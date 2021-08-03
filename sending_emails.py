@@ -1,7 +1,7 @@
 import yagmail
 
 
-receiver = "axelshalom3@gmail.com"
+receiver = "ikiguma%73628@gmail.com"
 body = "Thank you for registering with Bookshelf!"
 subject = "Successful Registration!"
 html = '<a href="https://bookshelfaacdl.herokuapp.com/"><br />Bookshelf</a>'

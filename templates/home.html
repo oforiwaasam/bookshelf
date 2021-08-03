@@ -16,6 +16,7 @@
     <!-- MDB -->
     <link rel="stylesheet" href="css/mdb.min.css" />
   </head>
+    
   <body>
     <div class="home_img">
         <div class= "searchnav" style="width:800px; margin:0 auto;">
@@ -26,16 +27,18 @@
                     <a href="/search_author"> <button class="home_button">Author</button> </a>
                     <a href="/search_ISBN"> <button class="home_button">ISBN Number</button> </a>
                     <a href="/search_topics"> <button class="home_button">Topics</button> </a>
-                    <a href="/search_open_ID"> <button class="home_button">ID</button> </a>
+<!--                     <a href="/search_open_ID"> <button class="home_button">ID</button> </a> -->
 
                 </ul>
             </div>
 
             <form method="POST" action="/home" >
     <!--             <button class ="home_button">Options</button> -->
-                <input type="text" name="q" placeholder="Search Book..">                
-    <!--             <input class ="home_button2" type="submit" name="form" value="Submit"> -->
+                <input type="text" name="q" placeholder="Search Book..">  
+                <br>
+                <input class ="home_button2" type="submit" name="form" value="Submit">
             </form>
+                
         </div>
     </div>
 
@@ -47,19 +50,19 @@
     <button class= "right" onClick="plusSlides(1)">&#10095;</button>
     <div class="slide_fade"> 
         {% for key,value in top_books[0].items() %}
-            <a href=""><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>
+            <a href="/book_page/{{key}}"><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>
             
         {% endfor %}
     </div>
     <div class="slide_fade">
         {% for key,value in top_books[1].items() %}
-            <a href=""><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>
+            <a href="/book_page/{{key}}"><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>
             
         {% endfor %}
    </div>
    <div class="slide_fade">
         {% for key,value in top_books[2].items() %}
-            <a href=""><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>
+            <a href="/book_page/{{key}}"><button class="book_cover_button"><img class="book_cover" src={{key}} alt={{key}}> </button></a>
             
         {% endfor %}
    </div>
@@ -77,61 +80,27 @@
     
 </div>
 
-
-    <div class="p-5 text-center bg-image">
+<div class="Best_Seller_Container">
+<!--     <div class="BSeller_text"> -->
+        <h1 class="BSeller_text">Don't know where to start?</h1>
+         <h4 class="BSeller_text">Check below for the New York Times Best Sellers List</h4>
+<!--     </div> -->
+<!--     <div class="p-5 text-center bg-image">
       <div class="mask" style="background-color: rgba(0, 0, 0, 0);">
           <div class="d-flex justify-content-center align-items-center h-100">
             <div class="text-white">
               <h1 class="mb-3">Don't know where to start?</h1>
               <h4 class="mb-3">Check below for the New York Times Best Sellers List</h4>
-  <!--             <a class="btn btn-outline-light btn-lg" href="#!" role="button">Call to action</a> -->
-            </div>
+             </div>
           </div>
         </div>
-      </div>
+      </div> -->
+</div>
     
     <!-- Footer -->
     <footer>
       <!-- Grid container -->
       <div class="container p-4">
-
-        <!-- Section: Form -->
-        <section class="">
-          <form action="">
-            <!--Grid row-->
-            <div class="row d-flex justify-content-center">
-              <!--Grid column-->
-              <div class="col-auto">
-                <p class="pt-2">
-                  <strong>Sign up for our newsletter</strong>
-                </p>
-              </div>
-              <!--Grid column-->
-
-              <!--Grid column-->
-              <div class="col-md-5 col-12">
-                <!-- Email input -->
-                <div class="form-outline form-white mb-4">
-                  <input type="email" id="form5Example2" class="form-control" />
-                  <label class="form-label" for="form5Example2">Email address</label>
-                </div>
-              </div>
-              <!--Grid column-->
-
-              <!--Grid column-->
-              <div class="col-auto">
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-outline-light mb-4">
-                  Subscribe
-                </button>
-              </div>
-              <!--Grid column-->
-            </div>
-            <!--Grid row-->
-          </form>
-        </section>
-        <!-- Section: Form -->
-
         <!-- Section: Links -->
         <section class="">
           <!--Grid row-->
@@ -142,46 +111,46 @@
 
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="#!" class="text-dark">Combined Print and E-Book Fiction</a>
+                  <a href="/search_best_seller/Combined Print and E-Book Fiction" class="text-dark">Combined Print and E-Book Fiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Combined Print and E-Book Nonfiction</a>
+                  <a href="/search_best_seller/Combined Print and E-Book Nonfiction" class="text-dark">Combined Print and E-Book Nonfiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Hardcover Fiction</a>
+                  <a href="/search_best_seller/Hardcover Fiction" class="text-dark">Hardcover Fiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Hardcover Nonfiction</a>
+                  <a href="/search_best_seller/Hardcover Nonfiction" class="text-dark">Hardcover Nonfiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Chapter Books</a>
+                  <a href="/search_best_seller/Chapter Books" class="text-dark">Chapter Books</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Childrens Middle Grade Hardcover</a>
+                  <a href="/search_best_seller/Childrens Middle Grade Hardcover" class="text-dark">Childrens Middle Grade Hardcover</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Young Adult Hardcover</a>
+                  <a href="/search_best_seller/Young Adult Hardcover" class="text-dark">Young Adult Hardcover</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Games and Activities</a>
+                  <a href="/search_best_seller/Games and Activities" class="text-dark">Games and Activities</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Graphic Books and Manga</a>
+                  <a href="/search_best_seller/Graphic Books and Manga" class="text-dark">Graphic Books and Manga</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Hardcover Business Books</a>
+                  <a href="/search_best_seller/Hardcover Business Books" class="text-dark">Hardcover Business Books</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Hardcover Political Books</a>
+                  <a href="/search_best_seller/Hardcover Political Books" class="text-dark">Hardcover Political Books</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Mass Market Monthly</a>
+                  <a href="/search_best_seller/Mass Market Monthly" class="text-dark">Mass Market Monthly</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Family</a>
+                  <a href="/search_best_seller/Family" class="text-dark">Family</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Travel</a>
+                  <a href="/search_best_seller/Travel" class="text-dark">Travel</a>
                 </li>
               </ul>
             </div>
@@ -193,49 +162,49 @@
 
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="#!" class="text-dark">Trade Fiction Paperback</a>
+                  <a href="/search_best_seller/" class="text-dark">Trade Fiction Paperback</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Mass Market Paperback</a>
+                  <a href="/search_best_seller/" class="text-dark">Mass Market Paperback</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Paperback Nonfiction</a>
+                  <a href="/search_best_seller/" class="text-dark">Paperback Nonfiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">E-Book Fiction</a>
+                  <a href="/search_best_seller/" class="text-dark">E-Book Fiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Childrens Middle Grade</a>
+                  <a href="/search_best_seller/" class="text-dark">Childrens Middle Grade</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Childrens Middle Grade Paperback</a>
+                  <a href="/search_best_seller/" class="text-dark">Childrens Middle Grade Paperback</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Paperback Books</a>
+                  <a href="/search_best_seller/" class="text-dark">Paperback Books</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Animals</a>
+                  <a href="/search_best_seller/" class="text-dark">Animals</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Audio Fiction</a>
+                  <a href="/search_best_seller/" class="text-dark">Audio Fiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Audio Nonfiction</a>
+                  <a href="/search_best_seller/" class="text-dark">Audio Nonfiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Business Books</a>
+                  <a href="/search_best_seller/" class="text-dark">Business Books</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Health</a>
+                  <a href="/search_best_seller/" class="text-dark">Health</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Humor</a>
+                  <a href="/search_best_seller/" class="text-dark">Humor</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Indigenous Americans</a>
+                  <a href="/search_best_seller/" class="text-dark">Indigenous Americans</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Relationships</a>
+                  <a href="/search_best_seller/" class="text-dark">Relationships</a>
                 </li>
                 
               </ul>
@@ -248,49 +217,49 @@
 
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="#!" class="text-dark">E-Book Nonfiction</a>
+                  <a href="/search_best_seller/E-Book Nonfiction" class="text-dark">E-Book Nonfiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Hardcover Advice</a>
+                  <a href="/search_best_seller/Hardcover Advice" class="text-dark">Hardcover Advice</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Paperback Advice</a>
+                  <a href="/search_best_seller/Paperback Advice" class="text-dark">Paperback Advice</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Advice How-To and Miscellaneous</a>
+                  <a href="/search_best_seller/Advice How-To and Miscellaneous" class="text-dark">Advice How-To and Miscellaneous</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Childrens Middle Grade E-Book</a>
+                  <a href="/search_best_seller/Childrens Middle Grade E-Book" class="text-dark">Childrens Middle Grade E-Book</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Picture Books</a>
+                  <a href="/search_best_seller/Picture Books" class="text-dark">Picture Books</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Series Books</a>
+                  <a href="/search_best_seller/Series Books" class="text-dark">Series Books</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Celebrities</a>
+                  <a href="/search_best_seller/Celebrities" class="text-dark">Celebrities</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Crime and Punishment</a>
+                  <a href="/search_best_seller/Crime and Punishment" class="text-dark">Crime and Punishment</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Culture</a>
+                  <a href="/search_best_seller/Culture" class="text-dark">Culture</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Education</a>
+                  <a href="/search_best_seller/Education" class="text-dark">Education</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Race and Civil Rights</a>
+                  <a href="/search_best_seller/Race and Civil Rights" class="text-dark">Race and Civil Rights</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Religion Spirituality and Faith</a>
+                  <a href="/search_best_seller/Religion Spirituality and Faith" class="text-dark">Religion Spirituality and Faith</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Science</a>
+                  <a href="/search_best_seller/Science" class="text-dark">Science</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Sports</a>
+                  <a href="/search_best_seller/Sports" class="text-dark">Sports</a>
                 </li>
                 
               </ul>
@@ -303,46 +272,46 @@
 
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="#!" class="text-dark">Hardcover Graphic Books</a>
+                  <a href="/search_best_seller/Hardcover Graphic Books" class="text-dark">Hardcover Graphic Books</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Paperback Graphic Book</a>
+                  <a href="/search_best_seller/Paperback Graphic Book" class="text-dark">Paperback Graphic Book</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Manga</a>
+                  <a href="/search_best_seller/Manga" class="text-dark">Manga</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Combined Print Fiction</a>
+                  <a href="/search_best_seller/Combined Print Fiction" class="text-dark">Combined Print Fiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Combined Print Nonfiction</a>
+                  <a href="/search_best_seller/Combined Print Nonfiction" class="text-dark">Combined Print Nonfiction</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Young Adult</a>
+                  <a href="/search_best_seller/Young Adult" class="text-dark">Young Adult</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Young Adult E-Book</a>
+                  <a href="/search_best_seller/Young Adult E-Book" class="text-dark">Young Adult E-Book</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Espionage</a>
+                  <a href="/search_best_seller/Espionage" class="text-dark">Espionage</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Expeditions Disasters and Adventures</a>
+                  <a href="/search_best_seller/Expeditions Disasters and Adventures" class="text-dark">Expeditions Disasters and Adventures</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Fashion Manners and Customs</a>
+                  <a href="/search_best_seller/Fashion Manners and Customs" class="text-dark">Fashion Manners and Customs</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Food and Fitness</a>
+                  <a href="/search_best_seller/Food and Fitness" class="text-dark">Food and Fitness</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Young Adult Paperback</a>
+                  <a href="/search_best_seller/Young Adult Paperback" class="text-dark">Young Adult Paperback</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Middle Grade Paperback Monthly</a>
+                  <a href="/search_best_seller/Middle Grade Paperback Monthly" class="text-dark">Middle Grade Paperback Monthly</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-dark">Paperback Business Books</a>
+                  <a href="/search_best_seller/Paperback Business Books" class="text-dark">Paperback Business Books</a>
                 </li>
                 
               </ul>

@@ -40,7 +40,8 @@ book = Book()
 @app.route("/")
 @app.route("/home", methods=['GET', 'POST'])
 def home():
-    top_books = homepage_bestsellers()
+    top_books, book.other_books = homepage_bestsellers()
+#     book.other_books = top_books
     if request.method=='POST':
         book.key = request.form.get("q")
         book.other_books = ol_book_names(book.key)
@@ -124,13 +125,21 @@ def user():
              
             
     return render_template('user.html', subtitle='User Page',
-                           text= theText)
+                           text= theText, 
+                           username=log_manage.get_username())
 
 # helper fun for book_page
 def lookforbook(other_books,name):
-    for key,value in other_books.items():
-        if(name in key ):
-            return key, value
+    if(isinstance(other_books, dict)):
+        for key,value in other_books.items():
+            if(name in key ):
+                return key, value
+    else:
+        for elem in other_books:
+#             print(elem)
+            for key,value in other_books.items():
+                if(name in key ):
+                    return key, value
     return None, [None,None,None,None] #in case it does not work for now -> make exception later on
             
 
@@ -147,8 +156,23 @@ def book_page(key):
     return render_template('book_page.html', book_title=book_data[0], author=book_data[1], web=book_data[2], cover=cover, recs = book.other_books, prices=prices)
 
 
+@app.route("/search_best_seller/<string:category>", methods=['GET', 'POST'])
+def search_best_seller(category):
+#     print(category)
+    book.other_books = select_category(category)
+#     if request.method=='POST':
+#         book.key = request.form.get("q")
+#         book.other_books = ol_book_names(book.key)
+# #         book.name = "Book1"
+# #         book.other_books = {"Book1":["book_title", "authors_list", "cover_url", "url"], "Book2":["book_title", "authors_list", "cover_url", "url"], "Book3":["book_title", "authors_list", "cover_url", "url"],"Book32":["book_title", "authors_list", "cover_url", "url"]}
+#         return render_template('search.html',button="Book", books=book.other_books)
+        
+    return render_template('search.html',button="Books", books=book.other_books)
+
+
 @app.route("/search", methods=['GET', 'POST'])
 def search():
+    book.other_books = select_category("Hardcover Fiction")
     if request.method=='POST':
         book.key = request.form.get("q")
         if log_manage.is_logged_in():
@@ -160,7 +184,7 @@ def search():
 #         book.other_books = {"Book1":["book_title", "authors_list", "cover_url", "url"], "Book2":["book_title", "authors_list", "cover_url", "url"], "Book3":["book_title", "authors_list", "cover_url", "url"],"Book32":["book_title", "authors_list", "cover_url", "url"]}
         return render_template('search.html',button="Book", books=book.other_books)
         
-    return render_template('search.html',button="Book", books={})
+    return render_template('search.html',button="Book", books=book.other_books)
 
 @app.route("/search_author", methods=['GET', 'POST'])
 def search_author():
@@ -174,7 +198,7 @@ def search_author():
         search = ol_authors(book.key)
         if(search[0]==0):
             book.other_books = search[1]
-            print(book.other_books)
+#             print(book.other_books)
             return render_template('search.html',button="Author", books=book.other_books)
         else:
             return render_template('search.html',button="Author", subtitle=f'Did you mean.. {search[1]}', books={})
