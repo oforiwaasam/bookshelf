@@ -39,7 +39,7 @@ def ol_isbn(isbn):
     else:
         cover_url = 'No cover picture available!'
 #     print(book_title, authors_list, cover_url)
-    book_dic[cover_url] = [book_title, authors_list, url]
+    book_dic[cover_url] = [book_title, authors_list, url, isbn]
     return book_dic
 
 
@@ -135,6 +135,29 @@ def ol_subjects(subject):
         books_dic.update(results)
     return books_dic
 
+# # get ISBN
+# def get_ISBN(book):
+#     result = requests.get('http://openlibrary.org/search.json?q=' + book)
+#     result_json = result.json()
+# #     print('First 20 results for ' + book)
+# #     print('---------------------' + '-' * len(book))
+#     num_books = 0
+#     for book in result_json['docs']:
+#         # print(book)
+#         num_books += 1
+#         key = 'isbn'
+#         if key in book:
+#             if len(book['isbn']) > 1:
+#                 book_isbn = book['isbn'][1]
+#             else:
+#                 book_isbn = book['isbn'][0]
+
+#             # get book info using its isbn
+#             print('ISBN Number: ' + book_isbn)
+#         if num_books == 20:
+#             break
+
+#     return book_isbn
 
 # main function to test my individual functions
 def main():
