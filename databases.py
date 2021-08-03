@@ -43,7 +43,6 @@ def create_search_history_df():
     col_names = ['Username', 'Type of Search', 'Searched Item']
     dataframe = pd.DataFrame(columns=col_names)
     save_data_to_file(dataframe, dbName, tableName, fileName)
-
     return dataframe
 
 
@@ -79,6 +78,7 @@ def new_user(id, username, email):
     if id == 1:
         personal_info_df = create_personal_info_df()
         your_bookshelf_df = create_your_bookshelf_df()
+        create_search_history_df()
     else:
         personal_info_df = db_to_dataframe(dbName, personal_info_tableName, fileName)
         your_bookshelf_df = db_to_dataframe(dbName, your_bookshelf_tableName, fileName)
@@ -120,20 +120,59 @@ def update_bookshelf(username, variable_type, variable_value):
     save_data_to_file(dtfr_final, dbName, tableName, fileName)
 
 
+# to be called in main.py
 def update_interests(username, variable_value):
     update_bookshelf(username, 'Interests', variable_value)
     
 
-def update_fav_authors(username, variable_type, variable_value):
+# to be called in main.py
+def update_fav_authors(username, variable_value):
     update_bookshelf(username, 'Favorite Authors', variable_value)
 
 
-def update_currently_reading(username, variable_type, variable_value):
+# to be called in main.py
+def update_currently_reading(username, variable_value):
     update_bookshelf(username, 'Currently Reading', variable_value)
 
 
-def main():
-    create_search_history_df()
+def get_user_bookshelf(username, variable_type):
+    tableName = 'your_bookshelf'
+    fileName = 'user_data'
+    dbName = 'bookshelf_db'
+    dataframe = db_to_dataframe(dbName, tableName, fileName)
+
+    # select rows corresponding to specified variable type
+    spec_dataframe = dataframe[dataframe['Variable Type'] == variable_type]
+    
+    # put results in a list
+    results = []
+    for index, row in spec_dataframe.iterrows():
+        results.append(row['Variable Value'])
+
+    # put results in a dictionary to return
+    user_dict = {}
+    user_dict[variable_type] = results
+
+    return user_dict
+
+
+# to be called in main.py
+def get_user_interests(username):
+    return get_user_bookshelf(username, 'Interests')
+    
+
+# to be called in main.py
+def get_user_fav_authors(username):
+    return get_user_bookshelf(username, 'Favorite Authors')
+
+
+# to be called in main.py
+def _currently_reading(username):
+    return get_user_bookshelf(username, 'Currently Reading')
+
+# def main():
+#     create_search_history_df()
+#     print(get_user_interests('hey'))
 
 
 if __name__ == "__main__":
