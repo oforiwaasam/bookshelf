@@ -9,6 +9,7 @@ from book_apis import *
 from bestsellers import *
 from isbndb_prices import get_data
 from databases import *
+from sending_emails import *
 
 
 app = Flask(__name__)
@@ -98,6 +99,14 @@ def registration():
         
         # creating a user instance in user_data table
         new_user(user.id, user.username, user.email)
+        
+        receiver = user.email
+        body = "Thank you for registering with Bookshelf!"
+        subject = "Successful Registration!"
+        html = '<a href="https://bookshelfaacdl.herokuapp.com/"><br />Bookshelf</a>'
+        
+        # sending an email to a user who registers
+        sending_email(user.email, subject, body, html)
         
         return redirect(url_for('login'))   # Successfully registered now login
     return render_template('registration.html', form=form)
