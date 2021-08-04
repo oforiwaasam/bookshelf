@@ -7,7 +7,21 @@
     <br>
     <a href={{web}}> <button class="book_button">For More Information</button></a>
     <br>
-    <p>Description Here</p>
+    
+    <!--  Adding Button to Favorite Bookshelf    -->
+<!--     <a href="/book_page"> <button class="home_button">Add to Favorite Bookshelf</button> </a> -->
+    <form method="POST">
+<!--       <input type="hidden" name="business" value="True">
+ -->
+      <!-- Display the payment button. -->
+      <input type="image" name="submit"
+        src="https://image.flaticon.com/icons/png/512/1517/1517856.png"
+        alt="Add to Cart" value="True" width="48" height="48">
+<!--       <img alt="" width="1" height="1"
+        src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"> -->
+    </form>
+    <!--  END    -->
+    
     <div class="dcontent_home">
         <ul>
             {% for data in prices %}
