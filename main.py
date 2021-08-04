@@ -113,7 +113,7 @@ def registration():
         flash(f'Account created for {form.username.data}!', 'success')
         
         # creating a user instance in user_data table
-        #new_user(user.id, user.username, user.email)
+        new_user(user.id, user.username, user.email)
         
         receiver = user.email
         body = "Thank you for registering with Bookshelf!"
@@ -166,9 +166,9 @@ def make_slide_show(bookshelve):
     return lst
         
 @app.route("/user", methods=['GET', 'POST'])
-def user(): #uncomment when finished
-#     form = LoginForm()
-#     if log_manage.is_logged_in():
+def user(): 
+     form = LoginForm()
+     if log_manage.is_logged_in():
         bookstack=make_shelves(book.book_stack)
         theText = 'User: {}, email: {}'.format(
             log_manage.get_username(),log_manage.get_email())
