@@ -167,7 +167,7 @@ def get_user_fav_authors(username):
 
 
 # to be called in main.py
-def _currently_reading(username):
+def currently_reading(username):
     return get_user_bookshelf(username, 'Currently Reading')
 
 # def main():
