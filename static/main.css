@@ -421,8 +421,9 @@ a.article-title:hover {
   position: absolute;
 /*   margin-left: -47px; */
   text-align:center;
-  right: 330px;
-  margin-top: 50px;
+  right: 300px;
+  margin-top: 60px;
+/*   margin-top: 50px; */
 /*   background-color: #C5CBE3; */
 /*   background-color: #C1C2B4; */
 }

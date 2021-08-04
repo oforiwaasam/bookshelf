@@ -11,6 +11,7 @@ flask_behind_proxy==0.1.1
 flask_sqlalchemy
 pytest
 pycodestyle
+flask-login==0.5.0
 
 flask-bcrypt==0.7.1
 requests==2.18.4
