@@ -1,184 +1,294 @@
-<div class="user_back_img">
-<!--     <img src="https://lh3.googleusercontent.com/proxy/KhROWQZH_lpON6zZA_R7l5YSGm1FHDd0qd1OpnVkbr2eD-ePoiOsc_aF_U6w2zPVnhHOHR317-j7xTiGu-QrnO8W" class="round_img" alt="Girl in a jacket"> -->
-    <img src={{image[1]}} class="round_img">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Search Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- MDB icons -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"/>
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+  </head>
+  <body>
+    <div class="user_back_img">
+    <!--     <img src="https://lh3.googleusercontent.com/proxy/KhROWQZH_lpON6zZA_R7l5YSGm1FHDd0qd1OpnVkbr2eD-ePoiOsc_aF_U6w2zPVnhHOHR317-j7xTiGu-QrnO8W" class="round_img" alt="Girl in a jacket"> -->
+        <img src={{image[1]}} class="round_img">
 
-    <div class="title_txt">User: {{username}}</div>
-</div>
+        <div class="title_txt">User: {{username}}</div>
+    </div>
 
-<!-- SLIDESHOW 1 -->
-<div class="books">
-<!-- {% for bookshelves in bookstack %}
-<h3>{{bookshelves[0]}}</h3>
+    <!-- SLIDESHOW 1 -->
+<!--     <div class="books">
+    {% for bookshelves in bookstack %}
+    <h3>{{bookshelves[0]}}</h3>
 
-<div id={{bookshelves[0]}} class="slide_show_container">
-    <button class= "left" onClick="plusSlides(-1)">&#10094;</button>
-    <button class= "right" onClick="plusSlides(1)">&#10095;</button>
-    {% for bookshelf in bookshelves[1] %}
-    <div class="slide_fade"> 
+    <div id={{bookshelves[0]}} class="slide_show_container">
+        <button class= "left" onClick="plusSlides(-1)">&#10094;</button>
+        <button class= "right" onClick="plusSlides(1)">&#10095;</button>
+        {% for bookshelf in bookshelves[1] %}
+        <div class="slide_fade"> 
 
-        {% for elem in bookshelf %}
-            <a href="/book_page/{{elem[0]}}"><button class="book_cover_button"><img class="book_cover" src={{elem[0]}} alt={{elem[0]}}> </button></a>            
+            {% for elem in bookshelf %}
+                <a href="/book_page/{{elem[0]}}"><button class="book_cover_button"><img class="book_cover" src={{elem[0]}} alt={{elem[0]}}> </button></a>            
+            {% endfor %}
+        </div>
+
         {% endfor %}
     </div>
-
     {% endfor %}
-</div>
-{% endfor %}
-</div> -->
-<div class="box">
-   
-<h3>{{bookstack[0][0]}}</h3>
+    </div> -->
+    <div class="box">
 
-<div id={{bookstack[0][0]}} class="slide_show_container">
-    <button class= "left" onClick="plusSlides(-1)">&#10094;</button>
-    <button class= "right" onClick="plusSlides(1)">&#10095;</button>
-    {% for bookshelf in bookstack[0][1] %}
-    <div class="slide_fade"> 
+    <h3 style="text-align: center">{{bookstack[0][0]}}</h3>
 
-        {% for elem in bookshelf %}
-            <a href="/book_page/{{elem[0]}}"><button class="book_cover_button"><img class="book_cover" src={{elem[0]}} alt={{elem[0]}}> </button></a>            
+    <div id={{bookstack[0][0]}} class="slide_show_container">
+        <button class= "left" onClick="plusSlides(-1)">&#10094;</button>
+        <button class= "right" onClick="plusSlides(1)">&#10095;</button>
+        {% for bookshelf in bookstack[0][1] %}
+        <div class="slide_fade"> 
+
+            {% for elem in bookshelf %}
+                <a href="/book_page/{{elem[0]}}"><button class="book_cover_button"><img class="book_cover" src={{elem[0]}} alt={{elem[0]}}> </button></a>            
+            {% endfor %}
+        </div>
+
         {% endfor %}
     </div>
+    </div>
 
-    {% endfor %}
-</div>
-</div>
- 
-<div class="box">
+    <div class="box">
 
-<h3>{{bookstack[1][0]}}</h3>
-<div id={{bookstack[1][0]}} class="slide_show_container">
-    <button class= "left" onClick="plusSlides2(-1)">&#10094;</button>
-    <button class= "right" onClick="plusSlides2(1)">&#10095;</button>
-    {% for bookshelf in bookstack[1][1] %}
-    <div class="slide_fade2"> 
+    <h3 style="text-align: center">{{bookstack[1][0]}}</h3>
+    <div id={{bookstack[1][0]}} class="slide_show_container">
+        <button class= "left" onClick="plusSlides2(-1)">&#10094;</button>
+        <button class= "right" onClick="plusSlides2(1)">&#10095;</button>
+        {% for bookshelf in bookstack[1][1] %}
+        <div class="slide_fade2"> 
 
-        {% for elem in bookshelf %}
-            <a href="/book_page/{{elem[0]}}"><button class="book_cover_button"><img class="book_cover" src={{elem[0]}} alt={{elem[0]}}> </button></a>            
+            {% for elem in bookshelf %}
+                <a href="/book_page/{{elem[0]}}"><button class="book_cover_button"><img class="book_cover" src={{elem[0]}} alt={{elem[0]}}> </button></a>            
+            {% endfor %}
+        </div>
+
         {% endfor %}
     </div>
+    </div> 
 
-    {% endfor %}
-</div>
-</div> 
-    
-<div class="box">
-<h3>{{bookstack[2][0]}}</h3>
-<div id={{bookstack[2][0]}} class="slide_show_container">
-    <button class= "left" onClick="plusSlides3(-1)">&#10094;</button>
-    <button class= "right" onClick="plusSlides3(1)">&#10095;</button>
-    {% for bookshelf in bookstack[2][1] %}
-    <div class="slide_fade3"> 
+    <div class="box">
+    <h3 style="text-align: center">{{bookstack[2][0]}}</h3>
+    <div id={{bookstack[2][0]}} class="slide_show_container">
+        <button class= "left" onClick="plusSlides3(-1)">&#10094;</button>
+        <button class= "right" onClick="plusSlides3(1)">&#10095;</button>
+        {% for bookshelf in bookstack[2][1] %}
+        <div class="slide_fade3"> 
 
-        {% for elem in bookshelf %}
-            <a href="/book_page/{{elem[0]}}"><button class="book_cover_button"><img class="book_cover" src={{elem[0]}} alt={{elem[0]}}> </button></a>            
+            {% for elem in bookshelf %}
+                <a href="/book_page/{{elem[0]}}"><button class="book_cover_button"><img class="book_cover" src={{elem[0]}} alt={{elem[0]}}> </button></a>            
+            {% endfor %}
+        </div>
+
         {% endfor %}
     </div>
-
-    {% endfor %}
-</div>
-</div>
-    
-<div class="top_search">
-    <div class= "searchbar" style="width:800px; margin:0 auto;">
-            <div class="drop-down">
-                <button class="drop-down-button">Change Icon</button>
-                <div class="image_content">
-                <ul>
-                    
-                    {% for elem in image_lst %}
-                        <a href="/set_profile/{{elem[0]}}"><button class="image_cover_button"><img class="image_cover" src={{elem[1]}} alt={{elem[0]}}> </button></a>            
-                    {% endfor %}
-
-                </ul>
-                </div>
-
-            </div>         
     </div>
-</div>
+
+    <div class="top_search">
+        <div class= "searchbar" style="width:800px; margin:0 auto;">
+                <div class="drop-down">
+                    <button class="drop-down-button">Change Icon</button>
+                    <div class="image_content">
+                    <ul>
+
+                        {% for elem in image_lst %}
+                            <a href="/set_profile/{{elem[0]}}"><button class="image_cover_button"><img class="image_cover" src={{elem[1]}} alt={{elem[0]}}> </button></a>            
+                        {% endfor %}
+
+                    </ul>
+                    </div>
+
+                </div>         
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="text-center text-lg-start text-dark">
+
+     <!-- Section: Links  -->
+      <section class="">
+        <div class="container text-center text-md-start mt-5">
+          <!-- Grid row -->
+          <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <!-- Content -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                <i class="fas fa-gem me-3"></i>BookShelf
+              </h6>
+              <p>
+                We pull our data from the best resources to help you find the books you need
+                at a very low price. We also keep track, for you, of the books you love and
+                recommend related books.
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                Products used
+              </h6>
+              <p>
+                <a href="https://flask-doc.readthedocs.io/en/latest/" class="text-dark">Flask</a>
+              </p>
+              <p>
+                <a href="https://heroku.com" class="text-dark">Heroku</a>
+              </p>
+              <p>
+                <a href="https://www.figma.com/" class="text-dark">Figma</a>
+              </p>
+              <p>
+                <a href="https://www.codio.com/" class="text-dark">Codio</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                Databases accessed
+              </h6>
+              <p>
+                <a href="https://www.isbndb.com/" class="text-dark">ISBNdb</a>
+              </p>
+              <p>
+                <a href="https://www.booksrun.com/" class="text-dark">Booksrun</a>
+              </p>
+              <p>
+                <a href="https://www.openlibrary.org/" class="text-dark">Open Library</a>
+              </p>
+              <p>
+                <a href="https://www.nytimes.com/books/best-sellers/" class="text-dark">The New York Times Best Sellers</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                Contact
+              </h6>
+              <p>
+                <i class="fas fa-envelope me-3"></i>
+                <a href="mailto:bookshelfaacdl@gmail.com" class="text-dark">bookshelfaacdl@gmail.com</a>
+              </p>
+              <p>
+                <i class="fab fa-github me-3"></i>
+                <a href="https://github.com/oforiwaasam/bookshelf" class="me-4 text-reset">BookShelf on GitHub</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+      </section>
+      <!-- Section: Links  -->
+
+      <!-- Copyright -->
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
+       Copyright © 2021 BookShelf
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->   
 
 
 
+    <script> 
+        var slideIndex = 1;
+        showSlides(slideIndex);
 
-<script> 
-    var slideIndex = 1;
-    showSlides(slideIndex);
+        // Next/previous controls
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
 
-    // Next/previous controls
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
+        // Thumbnail image controls
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
 
-    // Thumbnail image controls
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
-    }
+        function showSlides(n) {
+          var i;
+          var slides = document.getElementsByClassName("slide_fade");
+          if (n > slides.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+          }
+          slides[slideIndex-1].style.display = "block";
 
-    function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("slide_fade");
-      if (n > slides.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      slides[slideIndex-1].style.display = "block";
-     
-//       dots[slideIndex-1].className += " active";
-    }
+    //       dots[slideIndex-1].className += " active";
+        }
 
-    
-//     SECOND slideshow
-     var slideIndex2 = 1;
-    showSlides2(slideIndex2);
 
-    // Next/previous controls
-    function plusSlides2(n) {
-      showSlides2(slideIndex2 += n);
-    }
+    //     SECOND slideshow
+         var slideIndex2 = 1;
+        showSlides2(slideIndex2);
 
-    // Thumbnail image controls
-    function currentSlide2(n) {
-      showSlides2(slideIndex2 = n);
-    }
+        // Next/previous controls
+        function plusSlides2(n) {
+          showSlides2(slideIndex2 += n);
+        }
 
-    function showSlides2(n) {
-      var i;
-      var slides = document.getElementsByClassName("slide_fade2");
-      if (n > slides.length) {slideIndex2 = 1}
-      if (n < 1) {slideIndex2 = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      slides[slideIndex2-1].style.display = "block";
-    }  
-    
-//     THIRD slideshow
-     var slideIndex3 = 1;
-    showSlides3(slideIndex3);
+        // Thumbnail image controls
+        function currentSlide2(n) {
+          showSlides2(slideIndex2 = n);
+        }
 
-    // Next/previous controls
-    function plusSlides3(n) {
-      showSlides2(slideIndex3 += n);
-    }
+        function showSlides2(n) {
+          var i;
+          var slides = document.getElementsByClassName("slide_fade2");
+          if (n > slides.length) {slideIndex2 = 1}
+          if (n < 1) {slideIndex2 = slides.length}
+          for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+          }
+          slides[slideIndex2-1].style.display = "block";
+        }  
 
-    // Thumbnail image controls
-    function currentSlide3(n) {
-      showSlides2(slideIndex3 = n);
-    }
+    //     THIRD slideshow
+         var slideIndex3 = 1;
+        showSlides3(slideIndex3);
 
-    function showSlides3(n) {
-      var i;
-      var slides = document.getElementsByClassName("slide_fade3");
-      if (n > slides.length) {slideIndex3 = 1}
-      if (n < 1) {slideIndex3 = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      slides[slideIndex3-1].style.display = "block";
-    }  
-   
-</script>
+        // Next/previous controls
+        function plusSlides3(n) {
+          showSlides2(slideIndex3 += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide3(n) {
+          showSlides2(slideIndex3 = n);
+        }
+
+        function showSlides3(n) {
+          var i;
+          var slides = document.getElementsByClassName("slide_fade3");
+          if (n > slides.length) {slideIndex3 = 1}
+          if (n < 1) {slideIndex3 = slides.length}
+          for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+          }
+          slides[slideIndex3-1].style.display = "block";
+        }  
+
+    </script>
 
 
 
@@ -228,7 +338,8 @@
     </div>
 </div> 
  -->
-
+</body>
+</html>
 
     
 {% extends "layout.html" %}

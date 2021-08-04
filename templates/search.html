@@ -1,3 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Search Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- MDB icons -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"/>
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+  </head>
+  <body>
 <div class="top_search">
     <div class= "searchbar" style="width:800px; margin:0 auto;">
             <div class="drop-down">
@@ -47,6 +65,101 @@
     {% endfor %}
 
 </div>
+<!-- Footer -->
+<footer class="text-center text-lg-start text-dark">
+
+ <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>BookShelf
+          </h6>
+          <p>
+            We pull our data from the best resources to help you find the books you need
+            at a very low price. We also keep track, for you, of the books you love and
+            recommend related books.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products used
+          </h6>
+          <p>
+            <a href="https://flask-doc.readthedocs.io/en/latest/" class="text-dark">Flask</a>
+          </p>
+          <p>
+            <a href="https://heroku.com" class="text-dark">Heroku</a>
+          </p>
+          <p>
+            <a href="https://www.figma.com/" class="text-dark">Figma</a>
+          </p>
+          <p>
+            <a href="https://www.codio.com/" class="text-dark">Codio</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Databases accessed
+          </h6>
+          <p>
+            <a href="https://www.isbndb.com/" class="text-dark">ISBNdb</a>
+          </p>
+          <p>
+            <a href="https://www.booksrun.com/" class="text-dark">Booksrun</a>
+          </p>
+          <p>
+            <a href="https://www.openlibrary.org/" class="text-dark">Open Library</a>
+          </p>
+          <p>
+            <a href="https://www.nytimes.com/books/best-sellers/" class="text-dark">The New York Times Best Sellers</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            <a href="mailto:bookshelfaacdl@gmail.com" class="text-dark">bookshelfaacdl@gmail.com</a>
+          </p>
+          <p>
+            <i class="fab fa-github me-3"></i>
+            <a href="https://github.com/oforiwaasam/bookshelf" class="me-4 text-reset">BookShelf on GitHub</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
+   Copyright © 2021 BookShelf
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->   
+</body>
+</html>
 {% extends "layout.html" %}
 {% block content %}
 {% endblock content %}
