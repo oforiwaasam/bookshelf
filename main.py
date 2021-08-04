@@ -7,10 +7,11 @@ from login_manager import Login_Manager
 from encryption import *
 from book_apis import *
 from bestsellers import *
+#from isbndb_prices import get_data
+from databases import *
+from sending_emails import *
 from multiple_sources_prices import *
-# from isbndb_prices import * # old price api
-# from databases import *
-# from sending_emails import *
+
 
 
 

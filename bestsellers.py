@@ -27,8 +27,9 @@ def select_category(user_input):
     title = book['title']
     author = book['author']
     book_image = book['book_image']
+    product_url = book['amazon_product_url']
     buy_links = book['buy_links']
-    entire_book_dic[book_image] = [title, author, buy_links, isbn13]
+    entire_book_dic[book_image] = [title, author, product_url, isbn13]
   return entire_book_dic
 
 #     print(rank, isbn10, isbn13, publisher, title, author, book_image, buy_links)
@@ -55,21 +56,24 @@ def homepage_bestsellers():
     title = book['title']
     author = book['author']
     book_image = book['book_image']
+    product_url = book['amazon_product_url']
     buy_links = book['buy_links'] 
-    book_dic[book_image] = [title, author, buy_links]
-    entire_book_dic[book_image] = [title, author, buy_links, isbn13]
+    book_dic[book_image] = [title, author, product_url]
+    entire_book_dic[book_image] = [title, author, product_url, isbn13]
     count+=1
-  #print(book_list['results']['books'])
+#   print(book_list['results']['books'])
 #   print(book_dic)
   return home_book_lst,entire_book_dic
 
 # def main():
+#   homepage_bestsellers()
 #   data = homepage_bestsellers()
 #   for key,value in data[0].items():
 #         print(value[2][0]['url']) #gets url
 #         print(key)#gets cover
 #   print(data[0])
   
-
+# if __name__ == "__main__":
+#   main()
 
 
