@@ -10,13 +10,9 @@ def bestsellers_category():
 #     print(name_dict['list_name'] + ': ' + name_dict['list_name_encoded'])
   
 
-<<<<<<< HEAD
-def select_category():
-  #user_input = input('Enter a book category: ')
-=======
 def select_category(user_input):
 #   user_input = input('Enter a book category: ')
->>>>>>> 888b9d6685ea41daa9450e7b7204bea9823d10ea
+
   url = 'https://api.nytimes.com/svc/books/v3/lists/current/' + user_input + '.json?&api-key=' + config.api_key
 
   output = requests.get(url)
