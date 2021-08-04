@@ -56,6 +56,8 @@ def home():
     if request.method=='POST':
         book.key = request.form.get("q")
         book.other_books = ol_book_names(book.key)
+        if(len(book.other_books.keys())==0):
+            flash("Sorry No Books",'error')
         book.book_stack["Recent"] = book.other_books
         return render_template('search.html',button="Books", books=book.other_books, top_books=top_books)
     return render_template('home.html',top_books=top_books)
@@ -248,6 +250,8 @@ def search():
             update_search_history(username, 'Book', book.key)
 
         book.other_books = ol_book_names(book.key)
+        if(len(book.other_books.keys())==0):
+            flash("Sorry No Books",'error')
         book.book_stack["Recent"] = book.other_books
 #         book.name = "Book1"
 #         book.other_books = {"Book1":["book_title", "authors_list", "cover_url", "url"], "Book2":["book_title", "authors_list", "cover_url", "url"], "Book3":["book_title", "authors_list", "cover_url", "url"],"Book32":["book_title", "authors_list", "cover_url", "url"]}
@@ -266,6 +270,7 @@ def search_author():
         
         search = ol_authors(book.key)
         if(search[0]==0):
+            print("IN HERE")
             book.other_books = search[1]
             if(len(book.other_books.keys())==0):
                 flash("Sorry No Books",'error')
