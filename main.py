@@ -24,6 +24,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
 
+
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.password}')"
 
@@ -35,16 +36,19 @@ class Book:
         self.key = ''
         self.other_books = {}
         self.home_search = ''
-        
+        self.book_stack = {"Recent":{},"Selected":{}}
+
 book = Book()
 @app.route("/")
 @app.route("/home", methods=['GET', 'POST'])
 def home():
     top_books, book.other_books = homepage_bestsellers()
+    book.book_stack["Recent"] = book.other_books
 #     book.other_books = top_books
     if request.method=='POST':
         book.key = request.form.get("q")
         book.other_books = ol_book_names(book.key)
+        book.book_stack["Recent"] = book.other_books
         return render_template('search.html',button="Books", books=book.other_books, top_books=top_books)
     return render_template('home.html',top_books=top_books)
 
@@ -116,17 +120,56 @@ def registration():
 def about():
     return render_template('about.html', subtitle='About Page')
 
-@app.route("/user")
-def user():
-    theText = "No one logged in"
-    if log_manage.is_logged_in():
+#helpers for user page
+def make_shelves(shelves): #{"Recent":{book_data},"Selected":{book_data}}
+    cmplt = []
+    for name,bookshelf in shelves.items():
+        print("JBCOWDNCXKWMXPWKMXKLNSJBCDHSBCDHEREE")
+        slide = make_slide_show(bookshelf)
+        cmplt.append((name,slide))
+#         for key,value in bookshelf.items()
+#             cmplt.append((key,value))
+    return cmplt
+
+def make_slide_show(bookshelve):
+    count = 0
+    total_count =0
+    lst = []
+    temp = []
+    length = len(bookshelve.keys())
+    for key,value in bookshelve.items():
+        temp.append((key,value))
+        count+=1  
+        total_count+=1
+        print("length", total_count, length)
+        if(count==3):
+            lst.append(temp)
+            temp=[]
+            count=0
+        elif(total_count==length):
+            lst.append(temp)
+            temp=[]
+            count=0
+                  
+        
+        
+    return lst
+        
+    
+
+@app.route("/user", methods=['GET', 'POST'])
+def user(): #uncomment when finished
+#     form = LoginForm()
+#     if log_manage.is_logged_in():
+        bookstack=make_shelves(book.book_stack)
         theText = 'User: {}, email: {}'.format(
             log_manage.get_username(),log_manage.get_email()) 
+        return render_template('user.html', subtitle='User Page',
+                           text= theText, 
+                           username=log_manage.get_username(),bookstack=bookstack)
              
             
-    return render_template('user.html', subtitle='User Page',
-                           text= theText, 
-                           username=log_manage.get_username())
+#     return render_template('login.html',form=form)
 
 # helper fun for book_page
 def lookforbook(other_books,name):
@@ -146,10 +189,10 @@ def lookforbook(other_books,name):
 @app.route("/book_page/<path:key>", methods=['GET'])
 def book_page(key):
     cover, book_data = lookforbook(book.other_books,key)
-#     print(book_data[1], book_data[3])
-#     author = ''.join(book_data[1])
     # [listed_price,lowest_ebook,lowest_used,lowest_new,lowest_rental]  
     prices = get_data(book_data[3])
+    book.book_stack["Selected"].update({cover:book_data})
+    print("BOOK STACKKKKK",len(book.book_stack["Selected"].keys()))
     if prices==None:
         return render_template('book_page.html', book_title=book_data[0], author=book_data[1], web=book_data[2], cover=cover, recs = book.other_books)
 
@@ -160,6 +203,7 @@ def book_page(key):
 def search_best_seller(category):
 #     print(category)
     book.other_books = select_category(category)
+    book.book_stack["Recent"] = book.other_books
 #     if request.method=='POST':
 #         book.key = request.form.get("q")
 #         book.other_books = ol_book_names(book.key)
@@ -173,6 +217,7 @@ def search_best_seller(category):
 @app.route("/search", methods=['GET', 'POST'])
 def search():
     book.other_books = select_category("Hardcover Fiction")
+    book.book_stack["Recent"] = book.other_books
     if request.method=='POST':
         book.key = request.form.get("q")
         if log_manage.is_logged_in():
@@ -180,6 +225,7 @@ def search():
             update_search_history(username, 'Book', book.key)
 
         book.other_books = ol_book_names(book.key)
+        book.book_stack["Recent"] = book.other_books
 #         book.name = "Book1"
 #         book.other_books = {"Book1":["book_title", "authors_list", "cover_url", "url"], "Book2":["book_title", "authors_list", "cover_url", "url"], "Book3":["book_title", "authors_list", "cover_url", "url"],"Book32":["book_title", "authors_list", "cover_url", "url"]}
         return render_template('search.html',button="Book", books=book.other_books)
@@ -198,6 +244,7 @@ def search_author():
         search = ol_authors(book.key)
         if(search[0]==0):
             book.other_books = search[1]
+            book.book_stack["Recent"] = book.other_books
 #             print(book.other_books)
             return render_template('search.html',button="Author", books=book.other_books)
         else:
@@ -216,6 +263,7 @@ def search_ISBN():
             update_search_history(username, 'ISBN', book.key)
         
         book.other_books = ol_isbn(book.key)
+        book.book_stack["Recent"] = book.other_books
         return render_template('search.html',button="ISBN", books=book.other_books)
     return render_template('search.html',button="ISBN", books={})
 
@@ -230,6 +278,7 @@ def search_topics():
             update_search_history(username, 'Topic', book.key)
         
         book.other_books = ol_subjects(book.key)
+        book.book_stack["Recent"] = book.other_books
         return render_template('search.html',button="Topics", books=book.other_books)
     return render_template('search.html',button="Topics", books={})
 
@@ -239,6 +288,7 @@ def search_open_ID():
     if request.method=='POST':
         book.key = request.form.get("q")
         book.other_books = ol_work_id(book.key)
+        book.book_stack["Recent"] = book.other_books
         return render_template('search.html',button="ID", books=book.other_books)
         
     return render_template('search.html',button="ID", books={})
@@ -249,6 +299,7 @@ def bestsellers():
     if request.method=='POST':
         book.key = request.form.get("q")
         book.other_books = ol_work_id(book.key)
+        book.book_stack["Recent"] = book.other_books
         return render_template('bestsellers.html', books=book.other_books)
         
     return render_template('bestsellers.html', books={})
