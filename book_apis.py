@@ -185,8 +185,9 @@ def main():
 #     # results = ol_isbn(blackout)
 #     # print(results)
 
-    author = 'Ahmed Manan'
-#     # ol_authors(author)
+#     author = 'Ahmed Manan'
+    author = "Sam"
+    print(ol_authors(author))
 
 #     manan_book = 'Where the wild frontiers are'
 #     data_structures_book = 'Data Structures and Algorithm Analysis in Java'
@@ -200,8 +201,8 @@ def main():
 #     ahmed_manan_book_ol_id = '/works/OL16563824W'
 #     # ol_work_id(ahmed_manan_book_ol_id)
 
-    burundi_subject = 'burundi'
-    ol_subjects(burundi_subject)
+#     burundi_subject = 'burundi'
+#     ol_subjects(burundi_subject)
 
 #     print(ol_isbn(isbn))
 #     print(ol_book_names("cinderella_murder"))print(ol_authors("Manan Ahmed Asif"))
