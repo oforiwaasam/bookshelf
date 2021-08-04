@@ -100,39 +100,85 @@ def lowest_rental_price(rental_prices, json_isbndb):
         return None
 
 
-def main():
-    isbn = "9780132576277"
-    booksrun_api_key = "8mhw4i56nn5p1kasxdyu"
-    isbn_api_key = "46445_4b9207100f7b3236200445a31f95a377"
+def setprices(prices):
+    data = []
+    names = ["Lowest Ebook","Lowest Used","Lowest New","Lowest Rental"]
+    for elem in prices:
+        count = elem[0]
+        dic = elem[1]
+        for key,value in dic.items():
+            data.append((key,value[0],value[1],names[count]))
+    return data
 
-    js_mill_isbn = '9780199670802'
-    data_structures = '9780132576277'
-    aquarium = '9780793820788'
-    petit_pays = '9782246857334'
-    buildings = '9781564588852'
-    cinderella_murder = '9781476763699'
-    wrong_isbn = '1892sharabia'
+def get_data(ISBN):
+    if ISBN is not None:
+        data = []
+        booksrun_api_key = "8mhw4i56nn5p1kasxdyu"
+        isbn_api_key = "46445_4b9207100f7b3236200445a31f95a377"
+        #isbn = input_isbn()
+        json1 = booksrun_api_response(ISBN, booksrun_api_key)
+        json2 = i_api_response(isbn_api_key, ISBN)
 
-    #isbn = input_isbn()
-    json1 = booksrun_api_response(data_structures, booksrun_api_key)
-    json2 = i_api_response(isbn_api_key, data_structures)
+        json_booksrun = from_booksrun(json1)
+        json_others = from_others(json1)
 
-    json_booksrun = from_booksrun(json1)
-    json_others = from_others(json1)
+        paperbook_prices1 = get_booksrun_paperbook_prices(json_booksrun)
+        paperbook_prices2 = get_others_paperbook_prices(json_others)
+        ebook_prices = get_ebook_prices(json_booksrun)
+        rental_prices = get_rentals_prices(json_booksrun)
 
-    paperbook_prices1 = get_booksrun_paperbook_prices(json_booksrun)
-    paperbook_prices2 = get_others_paperbook_prices(json_others)
-    ebook_prices = get_ebook_prices(json_booksrun)
-    rental_prices = get_rentals_prices(json_booksrun)
+        lowest_used = lowest_used_book_price(paperbook_prices1, paperbook_prices2, json2)
+        lowest_new = lowest_new_book_price(paperbook_prices1, paperbook_prices2, json2)
+        lowest_ebook = lowest_ebook_price(ebook_prices, json2)
+        lowest_rental = lowest_rental_price(rental_prices, json2)
+        temp = [lowest_ebook,lowest_used,lowest_new,lowest_rental]
+        count = 0
+        for elem in temp:
+            if elem != None:
+                data.append((count,elem))
+            count+=1
 
-    print(lowest_used_book_price(paperbook_prices1, paperbook_prices2, json2))
-    print(lowest_new_book_price(paperbook_prices1, paperbook_prices2, json2))
-    print(lowest_ebook_price(ebook_prices, json2))
-    print(lowest_rental_price(rental_prices, json2))
+        return setprices(data)
+
+
+    
+  
+# # def main():
+# #   isbn = "9780132576277"
+# #   booksrun_api_key = "8mhw4i56nn5p1kasxdyu"
+# #   isbn_api_key = "46445_4b9207100f7b3236200445a31f95a377"
+    
+# #   js_mill_isbn = '9780199670802'
+# #   data_structures = '9780132576277'
+# #   aquarium = '9780793820788'
+# #   petit_pays = '9782246857334'
+# #   buildings = '9781564588852'
+# #   cinderella_murder = '9781476763699'
+# #   wrong_isbn = '1892sharabia'
+
+# #   #isbn = input_isbn()
+# #   json1 = booksrun_api_response(data_structures, booksrun_api_key)
+# #   json2 = i_api_response(isbn_api_key, data_structures)
+  
+# #   json_booksrun = from_booksrun(json1)
+# #   json_others = from_others(json1)
+
+# #   paperbook_prices1 = get_booksrun_paperbook_prices(json_booksrun)
+# #   paperbook_prices2 = get_others_paperbook_prices(json_others)
+# #   ebook_prices = get_ebook_prices(json_booksrun)
+# #   rental_prices = get_rentals_prices(json_booksrun)
+
+# #   print(lowest_used_book_price(paperbook_prices1, paperbook_prices2, json2))
+# #   print(lowest_new_book_price(paperbook_prices1, paperbook_prices2, json2))
+# #   print(lowest_ebook_price(ebook_prices, json2))
+# #   print(lowest_rental_price(rental_prices, json2))
+#     data_structures = '9780132576277'
+#     get_data(data_structures)
+    
       
 
 # if __name__ == '__main__':
-#     main()
+#   main()
   
   
   

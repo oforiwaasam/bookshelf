@@ -7,9 +7,11 @@ from login_manager import Login_Manager
 from encryption import *
 from book_apis import *
 from bestsellers import *
-from isbndb_prices import *
-from databases import *
-from sending_emails import *
+from multiple_sources_prices import *
+# from isbndb_prices import * # old price api
+# from databases import *
+# from sending_emails import *
+
 
 
 app = Flask(__name__)
@@ -205,12 +207,11 @@ def book_page(key):
     cover, book_data = lookforbook(book.other_books,key)
     # [listed_price,lowest_ebook,lowest_used,lowest_new,lowest_rental]  
     prices = get_data(book_data[3])
-    if(cover not in book.book_stack["Selected"].keys()):
+    if(cover!=None and (cover not in book.book_stack["Selected"].keys())):
+        print("COVERCOVERCOVER", cover)
         book.book_stack["Selected"].update({cover:book_data})
-#     print("BOOK STACKKKKK",len(book.book_stack["Selected"].keys()))
     if(request.method=='POST'):
-        print("HERE")
-        if(cover not in book.book_stack["Favorite"].keys()):
+        if(cover!=None and (cover not in book.book_stack["Favorite"].keys())):
             book.book_stack["Favorite"].update({cover:book_data})
     if prices==None:
         return render_template('book_page.html', book_title=book_data[0], author=book_data[1], web=book_data[2], cover=cover, recs = book.other_books)
