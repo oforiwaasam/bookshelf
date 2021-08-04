@@ -238,6 +238,8 @@ def search_best_seller(category):
 @app.route("/search", methods=['GET', 'POST'])
 def search():
     book.other_books = select_category("Hardcover Fiction")
+    if(len(book.other_books.keys())==0):
+        flash("Sorry No Books",'error')
     book.book_stack["Recent"] = book.other_books
     if request.method=='POST':
         book.key = request.form.get("q")
@@ -265,6 +267,8 @@ def search_author():
         search = ol_authors(book.key)
         if(search[0]==0):
             book.other_books = search[1]
+            if(len(book.other_books.keys())==0):
+                flash("Sorry No Books",'error')
             book.book_stack["Recent"] = book.other_books
 #             print(book.other_books)
             return render_template('search.html',button="Author", books=book.other_books)
@@ -284,6 +288,8 @@ def search_ISBN():
             update_search_history(username, 'ISBN', book.key)
         
         book.other_books = ol_isbn(book.key)
+        if(len(book.other_books.keys())==0):
+            flash("Sorry No Books",'error')
         book.book_stack["Recent"] = book.other_books
         return render_template('search.html',button="ISBN", books=book.other_books)
     return render_template('search.html',button="ISBN", books={})
@@ -299,6 +305,8 @@ def search_topics():
             update_search_history(username, 'Topic', book.key)
         
         book.other_books = ol_subjects(book.key)
+        if(len(book.other_books.keys())==0):
+            flash("Sorry No Books",'error')
         book.book_stack["Recent"] = book.other_books
         return render_template('search.html',button="Topics", books=book.other_books)
     return render_template('search.html',button="Topics", books={})
@@ -309,6 +317,8 @@ def search_open_ID():
     if request.method=='POST':
         book.key = request.form.get("q")
         book.other_books = ol_work_id(book.key)
+        if(len(book.other_books.keys())==0):
+            flash("Sorry No Books",'error')
         book.book_stack["Recent"] = book.other_books
         return render_template('search.html',button="ID", books=book.other_books)
         
@@ -320,6 +330,8 @@ def bestsellers():
     if request.method=='POST':
         book.key = request.form.get("q")
         book.other_books = ol_work_id(book.key)
+        if(len(book.other_books.keys())==0):
+            flash("Sorry No Books",'error')
         book.book_stack["Recent"] = book.other_books
         return render_template('bestsellers.html', books=book.other_books)
         
