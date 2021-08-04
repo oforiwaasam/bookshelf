@@ -1,213 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap');
+
 * {
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-body {
-  font-size: 14px;
-}
-.v53_24 {
-  width: 100%;
-  height: 1024px;
-  background: rgba(243,220,212,1);
-  opacity: 1;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-}
-.v53_25 {
-  width: 100%;
-  height: 112px;
-  background: rgba(209,207,192,1);
-  opacity: 1;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-}
-.v53_26 {
-  width: 720px;
-  height: 912px;
-  background: rgba(217,227,218,1);
-  opacity: 1;
-  position: absolute;
-  top: 112px;
-  left: 0px;
-  overflow: hidden;
-}
-.v53_27 {
-  width: 553px;
-  height: 651px;
-  background: url("../images/v53_27.png");
-  background-repeat: no-repeat;
-  background-position: center center;
+
+.background {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(book.png);
   background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 242px;
-  left: 788px;
-  overflow: hidden;
+  background-position: center;
+  height: 100vh;
 }
-.v53_28 {
-  width: 171px;
-  color: rgba(0,0,0,1);
+
+.content {
   position: absolute;
-  top: 0px;
-  left: 1px;
-  font-family: Sahitya;
-  font-weight: Bold;
-  font-size: 35px;
-  opacity: 1;
-  text-align: left;
-}
-.v53_29 {
-  width: 553px;
-  height: 120px;
-  background: url("../images/v53_29.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 386px;
-  left: 0px;
-  overflow: hidden;
-}
-.v53_30 {
-  width: 553px;
-  height: 65px;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-}
-.v53_31 {
-  width: 547px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 65px;
-  left: 6px;
-  font-family: Sahitya;
-  font-weight: Regular;
-  font-size: 25px;
-  opacity: 1;
-  text-align: left;
-}
-.v53_32 {
-  width: 553px;
-  height: 120px;
-  background: url("../images/v53_32.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 531px;
-  left: 0px;
-  overflow: hidden;
-}
-.v53_33 {
-  width: 553px;
-  height: 65px;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-}
-.v53_34 {
-  width: 547px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 65px;
-  left: 6px;
-  font-family: Sahitya;
-  font-weight: Regular;
-  font-size: 25px;
-  opacity: 1;
-  text-align: left;
-}
-.v53_35 {
-  width: 553px;
-  height: 120px;
-  background: url("../images/v53_35.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 95px;
-  left: 0px;
-  overflow: hidden;
-}
-.v53_36 {
-  width: 553px;
-  height: 65px;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-}
-.v53_37 {
-  width: 547px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 65px;
-  left: 6px;
-  font-family: Sahitya;
-  font-weight: Regular;
-  font-size: 25px;
-  opacity: 1;
-  text-align: left;
-}
-.v53_38 {
-  width: 553px;
-  height: 120px;
-  background: url("../images/v53_38.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 240px;
-  left: 0px;
-  overflow: hidden;
-}
-.v53_39 {
-  width: 553px;
-  height: 65px;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-}
-.v53_40 {
-  width: 547px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 65px;
-  left: 6px;
-  font-family: Sahitya;
-  font-weight: Regular;
-  font-size: 25px;
-  opacity: 1;
-  text-align: left;
-}
-.v53_41 {
-  width: 550px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 441px;
-  left: 85px;
-  font-family: Sahitya;
-  font-weight: Regular;
-  font-size: 35px;
-  opacity: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  padding: 60px 32px;
+  width: 370px;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 1.5px -1.5px 28px 7px rgba(0, 0, 0, 0.75);
+}
+
+.content h1 {
+  color: #fff;
+  font-size: 35px;
+  font-weight: 700;
+  margin: 0 0 35px 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.field {
+  position: relative;
+  height: 45px;
+  width: 100%;
+  color: rgba(255, 255, 355, 0.94);
+/*   background: rgba(255, 255, 355, 0.94); */
+  display: flex;
+}
+
+.field span {
+  color: #222;
+  width: 40px;
+  line-height: 45px;
+}
+
+.field input {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  outline: none;
+  color: #222;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  border: none;
+}
+
+.space {
+  margin-top: 16px;
+}
+
+.show {
+  position: absolute;
+  font-size: 13px;
+  right: 13px;
+  color: #222;
+  display: none;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pass:valid ~ .show {
+  display: block;
+}
+
+.forgot-pass {
+  text-align: left;
+  margin:10px 0;
+}
+
+.forgot-pass a {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+.forgot-pass a:hover {
+  text-decoration: underline;
+}
+
+.field input[type="submit"] {
+  background-color: #F3DCD4;
+  border: 1px solid #2691d9;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  color: rgba(17, 5, 5, 0.98);
+}
+
+.field input[type="submit"]:hover {
+  background: #F3DCD4;
+}
+
+.signup {
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+}
+
+.signup a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.signup a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 452px) {
+  .content {
+    width: 330px;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .content {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 385px) {
+  .content {
+    width: 280px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .content {
+    width: 260px;
+  }
 }
