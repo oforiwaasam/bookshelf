@@ -517,27 +517,17 @@ a.article-title:hover {
     text-align:center;
     margin-left:6%;
 }
+
+
 /****************USER_PAGE**************/
-* {
-  box-sizing: border-box;
-}
-body {
-  font-size: 14px;
-}
 
 .user_back_img {
   margin: auto;
   margin-top: 132px;
   width: 90%;
-  height: 656px;
-  background: rgba(209,207,192,1);
-  opacity: 1;
+  height: 350px;
+  background-color: #C5CBE3;
   padding: 10px;
-    
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  overflow: hidden;
     
 }
 
@@ -591,33 +581,30 @@ div.second_row{
 }
 
 .round_img {
-    
+/*   background-image:url("empty.png"); */
   margin :0 auto;
-  width: 252px;
+  width: 250px;
   height: 233px;
+  left: 43%;
   background: rgba(200,194,180,1);
   opacity: 1;
   position: absolute;
   border-radius: 50%;
-    
-  border: none;
+  position: center;
+  
     
 }
 
 .title_txt {
-  width: 252px;
-  height: 233px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  font-family: Sahitya;
-  font-weight: Regular;
-  font-size: 35px;
-  opacity: 1;
-  text-align: center; 
-  bottom: 50;
+  margin: auto;
+  margin-top: 20%;
+  width: 50%;
+/*   border: 3px solid green; */
+  padding: 10px;
+  text-align:center;
 }
 .message_txt {
-  width: 252px;
+/*   width: 252px;
   height: 233px;
   color: rgba(0,0,0,1);
   position: absolute;
@@ -627,7 +614,7 @@ div.second_row{
   opacity: 1;
   text-align: center;
     
-  bottom: 0;
+  bottom: 0; */
 }
 
 
@@ -641,4 +628,103 @@ div.second_row{
   left: 28px;
   border: 1px solid rgba(0,0,0,1);
   overflow: hidden;
+}
+
+/*  SLIDE SHOW IN USER PAGE */
+
+
+
+
+.mySlides3 {display:none}
+
+/* Slideshow container */
+.slideshow-container3 {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev3, .next3 {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next3 {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev3:hover, .next3:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text3 {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext3 {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot3 {
+  cursor:pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active3, .dot3:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade3 {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade3 {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade3 {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
 }

@@ -1,66 +1,209 @@
-<!-- https://i.pinimg.com/236x/65/25/a0/6525a08f1df98a2e3a545fe2ace4be47.jpg -->
+<div class="user_back_img">
+    <img src="https://lh3.googleusercontent.com/proxy/KhROWQZH_lpON6zZA_R7l5YSGm1FHDd0qd1OpnVkbr2eD-ePoiOsc_aF_U6w2zPVnhHOHR317-j7xTiGu-QrnO8W" class="round_img" alt="Girl in a jacket">
+    <div class="title_txt">User: {{username}}</div>
+</div>
 
-       <!-- <div class="v42_58">
-            <div class="v97_8">
-                <div class="v97_7"></div>
-                <div class="v42_60"></div>
-            </div>-->
-         
-<!-- TOP BOOKS -->
+<!-- SLIDESHOW 1 -->
+<div class="books">
+<!-- {% for bookshelves in bookstack %}
+<h3>{{bookshelves[0]}}</h3>
 
- <body>
-    <div class="user_back_img">
+<div id={{bookshelves[0]}} class="slide_show_container">
+    <button class= "left" onClick="plusSlides(-1)">&#10094;</button>
+    <button class= "right" onClick="plusSlides(1)">&#10095;</button>
+    {% for bookshelf in bookshelves[1] %}
+    <div class="slide_fade"> 
+
+        {% for elem in bookshelf %}
+            <a href="/book_page/{{elem[0]}}"><button class="book_cover_button"><img class="book_cover" src={{elem[0]}} alt={{elem[0]}}> </button></a>            
+        {% endfor %}
+    </div>
+
+    {% endfor %}
+</div>
+{% endfor %}
+</div> -->
+
+<h3>{{bookstack[0][0]}}</h3>
+
+<div id={{bookstack[0][0]}} class="slide_show_container">
+    <button class= "left" onClick="plusSlides(-1)">&#10094;</button>
+    <button class= "right" onClick="plusSlides(1)">&#10095;</button>
+    {% for bookshelf in bookstack[0][1] %}
+    <div class="slide_fade"> 
+
+        {% for elem in bookshelf %}
+            <a href="/book_page/{{elem[0]}}"><button class="book_cover_button"><img class="book_cover" src={{elem[0]}} alt={{elem[0]}}> </button></a>            
+        {% endfor %}
+    </div>
+
+    {% endfor %}
+</div>
+
+<h3>{{bookstack[1][0]}}</h3>
+<div id={{bookstack[1][0]}} class="slide_show_container">
+    <button class= "left" onClick="plusSlides2(-1)">&#10094;</button>
+    <button class= "right" onClick="plusSlides2(1)">&#10095;</button>
+    {% for bookshelf in bookstack[1][1] %}
+    <div class="slide_fade2"> 
+
+        {% for elem in bookshelf %}
+            <a href="/book_page/{{elem[0]}}"><button class="book_cover_button"><img class="book_cover" src={{elem[0]}} alt={{elem[0]}}> </button></a>            
+        {% endfor %}
+    </div>
+
+    {% endfor %}
+</div>
+
+
+<!-- Test -->
+
+<!-- <script>
+
+var slideshow1 = document.getElementById("Recent");
+slideshow1.currentSlideIndex = 1;
+showSlides(slideshow1.currentSlideIndex, slideshow1);
+
+var slideshow2 = document.getElementById("Selected");
+slideshow2.currentSlideIndex = 1;
+showSlides(slideshow2.currentSlideIndex, slideshow2);
+
+
+function plusSlides(n, slideshow) {
+  showSlides(slideshow.currentSlideIndex += n, slideshow);
+}
+
+function currentSlide(n, slideshow) {
+  showSlides(slideshow.currentSlideIndex = n, slideshow);
+}
+
+function showSlides(n, slideshow) {
+  
+
+
+  var i;
+  var slides = slideshow.getElementsByClassName("mySlides3");
+//   var dots = slideshow.getElementsByClassName("dot");
+  if (n > slides.length) {slideshow.currentSlideIndex = 1}    
+  if (n < 1) {slideshow.currentSlideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+//   for (i = 0; i < dots.length; i++) {
+//       dots[i].className = dots[i].className.replace(" active", "");
+//   }
+  slides[slideshow.currentSlideIndex-1].style.display = "block";  
+  dots[slideshow.currentSlideIndex-1].className += " active";
+}
+</script> -->
+
+
+<script> 
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("slide_fade");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      slides[slideIndex-1].style.display = "block";
+     
+//       dots[slideIndex-1].className += " active";
+    }
+
+    
+//     SECOND slideshow
+     var slideIndex2 = 1;
+    showSlides2(slideIndex2);
+
+    // Next/previous controls
+    function plusSlides2(n) {
+      showSlides2(slideIndex2 += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide2(n) {
+      showSlides2(slideIndex2 = n);
+    }
+
+    function showSlides2(n) {
+      var i;
+      var slides = document.getElementsByClassName("slide_fade2");
+      if (n > slides.length) {slideIndex2 = 1}
+      if (n < 1) {slideIndex2 = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      slides[slideIndex2-1].style.display = "block";
+    }   
+   
+</script>
+
+
+
+
+<!--     <div class="profile_class">
+        <div class="round_img"></div>
+        <span class="title_txt">{{username}}</span>
+        <span class="message_txt">Profile Message</span>
         
-        <div class="profile_class">
+    </div> -->
+
+    <!-- Favroite things, broken and doesnt work? -->
+    <!--
+    <div class="second_row">
+        <div class="fav_genre_class">
             <div class="round_img"></div>
-            <span class="title_txt">{{username}}</span>
+            <span class="title_txt"> Fav Genre</span>
             <span class="message_txt">Profile Message</span>
         </div>
-        
-        <!-- Favroite things, broken and doesnt work? -->
-        <!--
-        <div class="second_row">
-            <div class="fav_genre_class">
-                <div class="round_img"></div>
-                <span class="title_txt"> Fav Genre</span>
-                <span class="message_txt">Profile Message</span>
-            </div>
-            <div class="fav_topic_class">
-                <div class="round_img"></div>
-                <span class="title_txt"> Fav Topic</span>
-                <span class="message_txt">Profile Message</span>
-            </div>
-        </div> -->
-    
-    </div>
-     
-     <!-- MyBooks Shelf-->
-    <div class="books">
-        <h3 style="color:black">My BookShelf</h3>
-        <div class="slide_show_container">
-            <button class= "left" onClick="plusSlides(-1)">&#10094;</button>
-            <button class= "right" onClick="plusSlides(1)">&#10095;</button>
-            <div class="slide_fade"> 
-                    <a href=""><button class="book_cover_button"><img class="book_cover" src=https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc.jpg?ts=1588152105 alt=https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc.jpg?ts=1588152105> </button></a>
+        <div class="fav_topic_class">
+            <div class="round_img"></div>
+            <span class="title_txt"> Fav Topic</span>
+            <span class="message_txt">Profile Message</span>
+        </div>-->
+<!--  </div> -->
 
-            </div>
-            <div class="slide_fade">
-                    <a href=""><button class="book_cover_button"><img class="book_cover" src=https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc.jpg?ts=1588152105 alt=https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc.jpg?ts=1588152105> </button></a>
+<!-- </div> -->
 
-           </div>
-           <div class="slide_fade">
-                    <a href=""><button class="book_cover_button"><img class="book_cover" src=https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc.jpg?ts=1588152105 alt=https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc.jpg?ts=1588152105> </button></a>
+ <!-- MyBooks Shelf-->
+<!-- <div class="books">
+    <h3 style="color:black">My BookShelf</h3>
+    <div class="slide_show_container">
+        <button class= "left" onClick="plusSlides(-1)">&#10094;</button>
+        <button class= "right" onClick="plusSlides(1)">&#10095;</button>
+        <div class="slide_fade"> 
+                <a href=""><button class="book_cover_button"><img class="book_cover" src=https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc.jpg?ts=1588152105 alt=https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc.jpg?ts=1588152105> </button></a>
 
-           </div>
         </div>
-    </div> 
-</body>
+        <div class="slide_fade">
+                <a href=""><button class="book_cover_button"><img class="book_cover" src=https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc.jpg?ts=1588152105 alt=https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc.jpg?ts=1588152105> </button></a>
 
+       </div>
+       <div class="slide_fade">
+                <a href=""><button class="book_cover_button"><img class="book_cover" src=https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc.jpg?ts=1588152105 alt=https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc.jpg?ts=1588152105> </button></a>
+
+       </div>
+    </div>
+</div> 
+ -->
 
 
     
 {% extends "layout.html" %}
 {% block content %}
-    <h2>{{ subtitle }}</h2>
-    <h2>{{ text }}</h2>
 {% endblock content %}
