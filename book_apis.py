@@ -1,4 +1,5 @@
 import requests
+import datetime
 
 
 # ----------Open Library Books API---------- #
@@ -70,7 +71,7 @@ def ol_book_names(book):
 #             print(results)
 #         else:
 #             print('Information about book not available!')
-        if num_books == 20:
+        if num_books == 3:
             break
     # print(result_json)
     return books_dic
@@ -83,30 +84,30 @@ def ol_authors(author):
                           author)
     result_json = result.json()
     num_found = result_json['numFound']
-    if num_found == 1:
-        ol_id = result_json['docs'][0]['key']
-        books = requests.get('https://openlibrary.org/authors/' + ol_id +
-                             '/works.json')
-        books_json = books.json()
-        list_of_books = []
-        for book in books_json['entries']:
-            list_of_books.append(book['title'])
-            books_dic[book['title']] = [book['title'], author, None]
+    # if num_found == 1:
+    ol_id = result_json['docs'][0]['key']
+    books = requests.get('https://openlibrary.org/authors/' + ol_id +
+                         '/works.json')
+    books_json = books.json()
+    list_of_books = []
+    for book in books_json['entries']:
+        list_of_books.append(book['title'])
+        books_dic[book['title']] = [book['title'], author, None]
 #         print('Below are the books written by ' + author + ': ')
 
 #         # later transform this so that the brackets don't appear
 #         print(list_of_books)
 
-    else:
+#     else:
 
-        # figure out how to make sure that authors for whose names could be
-        # written differently do not fall in this else statement
+#         # figure out how to make sure that authors for whose names could be
+#         # written differently do not fall in this else statement
 
-        print("Please enter the exact name of the author! Options below!!!")
-        authors = ""
-        for author in result_json['docs']:
-            authors+= author['text'][1]
-        return 1, authors
+#         print("Please enter the exact name of the author! Options below!!!")
+#         authors = ""
+#         for author in result_json['docs']:
+#             authors+= author['text'][1]
+#         return 1, authors
         
     return 0, books_dic
     
@@ -125,15 +126,21 @@ def ol_work_id(book_ol_id):
 
 # search book info for books on subject provided
 def ol_subjects(subject):
+    begin_time = datetime.datetime.now()
     subject = subject.lower()
     books_dic={}
     result = requests.get('https://openlibrary.org/subjects/' + subject + '.json')
     result_json = result.json()
     # print(result_json)
+    num_books = 0
     for work in result_json['works']:
         # print(work)
+        num_books += 1
         results = ol_work_id(work['key'])
         books_dic.update(results)
+        if num_books == 5:
+            break
+    print(datetime.datetime.now() - begin_time)
     return books_dic
 
 # # get ISBN
@@ -193,8 +200,8 @@ def main():
 #     ahmed_manan_book_ol_id = '/works/OL16563824W'
 #     # ol_work_id(ahmed_manan_book_ol_id)
 
-#     burundi_subject = 'burundi'
-#     # ol_subjects(burundi_subject)
+    burundi_subject = 'burundi'
+    ol_subjects(burundi_subject)
 
 #     print(ol_isbn(isbn))
 #     print(ol_book_names("cinderella_murder"))print(ol_authors("Manan Ahmed Asif"))

@@ -8,8 +8,10 @@ from encryption import *
 from book_apis import *
 from bestsellers import *
 from multiple_sources_prices import *
+# from isbndb_prices import * # old price api
 # from databases import *
 # from sending_emails import *
+
 
 
 app = Flask(__name__)
@@ -89,13 +91,13 @@ def registration():
         exist_user = User.query.filter_by(username=form.username.data).first()
         if exist_user is not None:
             flash(f'Username {exist_user.username} is already taken', 'danger')
-            return render_template('register.html', title='Register', form=form)
+            return render_template('registration.html', title='Register', form=form)
         
         # Check database if email is already in use
         exist_user = User.query.filter_by(email=form.email.data).first()
         if exist_user is not None:
             flash(f'Email {exist_user.email} is already taken', 'danger')
-            return render_template('register.html', title='Register', form=form)
+            return render_template('registration.html', title='Register', form=form)
         
         # User can be registered
         user = User(username=form.username.data, 
@@ -108,7 +110,7 @@ def registration():
         flash(f'Account created for {form.username.data}!', 'success')
         
         # creating a user instance in user_data table
-        new_user(user.id, user.username, user.email)
+        #new_user(user.id, user.username, user.email)
         
         receiver = user.email
         body = "Thank you for registering with Bookshelf!"
@@ -205,11 +207,11 @@ def book_page(key):
     cover, book_data = lookforbook(book.other_books,key)
     # [listed_price,lowest_ebook,lowest_used,lowest_new,lowest_rental]  
     prices = get_data(book_data[3])
-    if(cover not in book.book_stack["Selected"].keys()):
+    if(cover!=None and (cover not in book.book_stack["Selected"].keys())):
         print("COVERCOVERCOVER", cover)
         book.book_stack["Selected"].update({cover:book_data})
     if(request.method=='POST'):
-        if(cover not in book.book_stack["Favorite"].keys()):
+        if(cover!=None and (cover not in book.book_stack["Favorite"].keys())):
             book.book_stack["Favorite"].update({cover:book_data})
     if prices==None:
         return render_template('book_page.html', book_title=book_data[0], author=book_data[1], web=book_data[2], cover=cover, recs = book.other_books)
