@@ -18,6 +18,15 @@
   </head>
     
   <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+       <div class="alert alert-{{ category }}">
+         {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
     <div class="home_img">
         <div class= "searchnav" style="width:800px; margin:0 auto;">
     <!--             <button class="drop-down-button_home">Books</button> -->
