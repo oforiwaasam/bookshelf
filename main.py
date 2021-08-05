@@ -94,13 +94,13 @@ def registration():
         exist_user = User.query.filter_by(username=form.username.data).first()
         if exist_user is not None:
             flash(f'Username {exist_user.username} is already taken', 'danger')
-            return render_template('registration.html', title='Register', form=form)
+            return render_template('login.html', title='Register', form=form)
         
         # Check database if email is already in use
         exist_user = User.query.filter_by(email=form.email.data).first()
         if exist_user is not None:
             flash(f'Email {exist_user.email} is already taken', 'danger')
-            return render_template('registration.html', title='Register', form=form)
+            return render_template('login.html', title='Register', form=form)
         
         # User can be registered
         user = User(username=form.username.data, 
@@ -167,16 +167,27 @@ def make_slide_show(bookshelve):
         
 @app.route("/user", methods=['GET', 'POST'])
 def user(): 
-     form = LoginForm()
-     if log_manage.is_logged_in():
-        bookstack=make_shelves(book.book_stack)
-        theText = 'User: {}, email: {}'.format(
-            log_manage.get_username(),log_manage.get_email())
-        if(request.method=='POST'):
-            image = request.form.get("q")
-        return render_template('user.html', subtitle='User Page',
-                           text= theText, 
-                           username=log_manage.get_username(),bookstack=bookstack, image=book.image, image_lst=icons)
+    
+#     if not log_manage.is_logged_in():
+#         form = LoginForm()
+#         flash("You need to be logged in to view the User page", 'danger')
+#         # redirect(url_for('login'))
+#         return render_template('login.html', form=form)
+      
+    bookstack=make_shelves(book.book_stack)
+    theText = 'User: {}, email: {}'.format(
+        log_manage.get_username(),log_manage.get_email())
+    if(request.method=='POST'):
+        image = request.form.get("q")
+    return render_template('user.html', subtitle='User Page',
+                       text= theText, 
+                       username=log_manage.get_username(),bookstack=bookstack, image=book.image, image_lst=icons)
+
+    
+    # redirect(url_for('login'))
+    
+  
+  
 @app.route("/set_profile/<string:count>", methods=['GET','POST'])
 def set_profile(count):
     print(count)
@@ -208,18 +219,20 @@ def lookforbook(other_books,name):
 @app.route("/book_page/<path:key>", methods=['GET','POST'])
 def book_page(key):
     cover, book_data = lookforbook(book.other_books,key)
-    # [listed_price,lowest_ebook,lowest_used,lowest_new,lowest_rental]  
-    prices = get_data(book_data[3])
-    if(cover!=None and (cover not in book.book_stack["Selected"].keys())):
-        print("COVERCOVERCOVER", cover)
-        book.book_stack["Selected"].update({cover:book_data})
-    if(request.method=='POST'):
-        if(cover!=None and (cover not in book.book_stack["Favorite"].keys())):
-            book.book_stack["Favorite"].update({cover:book_data})
-    if prices==None:
-        return render_template('book_page.html', book_title=book_data[0], author=book_data[1], web=book_data[2], cover=cover, recs = book.other_books)
+    # [listed_price,lowest_ebook,lowest_used,lowest_new,lowest_rental]
+    if cover is not None and book_data is not None:
+        prices = get_data(book_data[3])
+        if(cover!=None and (cover not in book.book_stack["Selected"].keys())):
+            print("COVERCOVERCOVER", cover)
+            book.book_stack["Selected"].update({cover:book_data})
+        if(request.method=='POST'):
+            if(cover!=None and (cover not in book.book_stack["Favorite"].keys())):
+                book.book_stack["Favorite"].update({cover:book_data})
+        if prices==None:
+            return render_template('book_page.html', book_title=book_data[0], author=book_data[1], web=book_data[2], cover=cover, recs = book.other_books)
 
-    return render_template('book_page.html', book_title=book_data[0], author=book_data[1], web=book_data[2], cover=cover, recs = book.other_books, prices=prices)
+        return render_template('book_page.html', book_title=book_data[0], author=book_data[1], web=book_data[2], cover=cover, recs = book.other_books, prices=prices)
+    return render_template('book_page.html', book_title = "No book information found.", recs={})
 
 
 @app.route("/search_best_seller/<string:category>", methods=['GET', 'POST'])
