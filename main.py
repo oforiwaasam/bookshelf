@@ -94,13 +94,13 @@ def registration():
         exist_user = User.query.filter_by(username=form.username.data).first()
         if exist_user is not None:
             flash(f'Username {exist_user.username} is already taken', 'danger')
-            return render_template('registration.html', title='Register', form=form)
+            return render_template('login.html', title='Register', form=form)
         
         # Check database if email is already in use
         exist_user = User.query.filter_by(email=form.email.data).first()
         if exist_user is not None:
             flash(f'Email {exist_user.email} is already taken', 'danger')
-            return render_template('registration.html', title='Register', form=form)
+            return render_template('login.html', title='Register', form=form)
         
         # User can be registered
         user = User(username=form.username.data, 
