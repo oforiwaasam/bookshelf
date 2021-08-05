@@ -35,7 +35,7 @@ CREATE TABLE `personal_info` (
 
 LOCK TABLES `personal_info` WRITE;
 /*!40000 ALTER TABLE `personal_info` DISABLE KEYS */;
-INSERT INTO `personal_info` VALUES (1,'axel','axelshalom3@gmail.com');
+INSERT INTO `personal_info` VALUES (1,'axel','axelshalom3@gmail.com'),(2,'Tim','tim@somebody.com');
 /*!40000 ALTER TABLE `personal_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,7 +82,7 @@ CREATE TABLE `your_bookshelf` (
 
 LOCK TABLES `your_bookshelf` WRITE;
 /*!40000 ALTER TABLE `your_bookshelf` DISABLE KEYS */;
-INSERT INTO `your_bookshelf` VALUES ('axel',NULL,NULL);
+INSERT INTO `your_bookshelf` VALUES ('axel',NULL,NULL),('Tim',NULL,NULL);
 /*!40000 ALTER TABLE `your_bookshelf` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -95,4 +95,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-05  3:00:13
+-- Dump completed on 2021-08-05  3:15:24
