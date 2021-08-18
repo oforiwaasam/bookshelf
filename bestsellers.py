@@ -1,9 +1,13 @@
-import config
+import os
 import requests
 import json
+from dotenv import load_dotenv
+load_dotenv() # running this will create environment variables
+
+api_key = os.getenv('api_key')
 
 def bestsellers_category():
-  url = 'https://api.nytimes.com/svc/books/v3/lists/names.json?&api-key=' + config.api_key
+  url = f"https://api.nytimes.com/svc/books/v3/lists/names.json?&api-key={api_key}"
   response = requests.get(url)
   results = response.json()['results']
 #   for name_dict in results:
@@ -13,7 +17,7 @@ def bestsellers_category():
 def select_category(user_input):
 #   user_input = input('Enter a book category: ')
 
-  url = 'https://api.nytimes.com/svc/books/v3/lists/current/' + user_input + '.json?&api-key=' + config.api_key
+  url = 'https://api.nytimes.com/svc/books/v3/lists/current/' + user_input + '.json?&api-key=' + api_key
 
   output = requests.get(url)
   data = output.json()
@@ -36,7 +40,7 @@ def select_category(user_input):
     
     
 def homepage_bestsellers():
-  homepage_url = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?&api-key=' + config.api_key
+  homepage_url = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?&api-key=' + api_key
   response = requests.get(homepage_url)
   book_list = response.json()
   entire_book_dic = {}
